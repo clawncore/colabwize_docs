@@ -8,14 +8,17 @@ import {
   BookOpen,
   Users,
   CreditCard,
+  Shield,
+  Zap,
+  Globe,
 } from "lucide-react";
 import { useState } from "react";
 
 const FAQPage = () => {
-  const [openCategory, setOpenCategory] = useState(null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const toggleCategory = (category) => {
+  const toggleCategory = (category: string) => {
     setOpenCategory(openCategory === category ? null : category);
   };
 
@@ -28,105 +31,219 @@ const FAQPage = () => {
         {
           question: "How do I create an account?",
           answer:
-            "You can create an account by clicking the 'Sign Up' button on our homepage. You'll need to provide your email address, create a password, and verify your email. After verification, you can complete your profile and start using ColabWize.",
+            "Click 'Sign Up' on the homepage or go to /signup. You can register with email/password or use Google/GitHub OAuth. After registration, verify your email via the link sent to your inbox. New users complete a one-time onboarding survey (role, institution, goals) before reaching the dashboard.",
         },
         {
-          question: "Is there a free plan available?",
+          question: "Is there a free plan?",
           answer:
-            "Yes! All new users get access to our Free plan which includes 3 document scans per month, basic originality checking (30 sentences), AI detection, 3 rephrase suggestions, and watermarked certificates. You can upgrade to a paid plan at any time.",
+            "Yes. The Free plan includes: full editor with real-time autosave, citation audit (limited scans/month), 7-database paper search (CrossRef, OpenAlex, arXiv, PubMed, Semantic Scholar, IEEE, DOAJ), AI Research Assistant (explain mode), Certificate of Authorship, multi-format export (DOCX, PDF, LaTeX, RTF, TXT), and Zotero/Mendeley import. Team workspaces, higher scan limits, and advanced analytics require Plus/Researcher/Institutional plans.",
         },
         {
           question: "What are the system requirements?",
           answer:
-            "ColabWize works on any modern web browser including Chrome, Firefox, Safari, and Edge. For the best experience, we recommend using the latest version of your preferred browser. Our mobile apps are available for iOS and Android devices.",
+            "Any modern browser: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+. JavaScript and cookies enabled. WebSocket support for real-time collaboration. No installation required — runs at app.colabwize.com. Optional PWA install for desktop/mobile/tablet from browser menu.",
+        },
+        {
+          question: "Do I need to install anything?",
+          answer:
+            "No. ColabWize is a web application. Open app.colabwize.com in your browser and sign in. Optional: install as a Progressive Web App (PWA) from Chrome/Edge/Safari menu for standalone window, home-screen icon, and offline caching.",
         },
       ],
     },
     {
       id: "account-management",
-      title: "Account Management",
+      title: "Account & Profile",
       icon: <Users className="h-5 w-5 text-green-600" />,
       faqs: [
         {
           question: "How do I change my password?",
           answer:
-            "You can change your password by going to Settings > Account > Security. Click on 'Change Password' and follow the prompts. For security reasons, you'll need to enter your current password before setting a new one.",
+            "Go to Settings → Account → Security → Change Password. Enter current password, then new password (min 8 chars, uppercase, number, special character). If you forgot your password, use 'Forgot Password' on the login page to receive a reset link via email.",
         },
         {
-          question: "How do I delete my account?",
+          question: "How do I update my profile (institution, field of study, citation style)?",
           answer:
-            "To delete your account, go to Settings > Account > Privacy & Security and select 'Delete Account'. Please note that this action is permanent and cannot be undone. All your data will be permanently removed from our systems.",
+            "Settings → Account → Profile. Edit: full name, institution, academic level, field of study, preferred citation style (APA, MLA, Chicago, IEEE, Harvard, Vancouver). These preferences pre-fill when creating new projects.",
         },
         {
           question: "Can I change my email address?",
           answer:
-            "Yes, you can update your email address in your account settings. Go to Settings > Account > Profile Information. After changing your email, you'll need to verify the new address before it becomes active.",
+            "Yes. Settings → Account → Profile → Email. Enter new email, verify via link sent to new address. The old email remains active until new one is verified.",
+        },
+        {
+          question: "How do I delete my account?",
+          answer:
+            "Settings → Account → Privacy & Security → Delete Account. This is permanent and irreversible. All projects, workspaces, certificates, and data are deleted. Workspace-owned projects transfer to workspace admins before deletion.",
+        },
+        {
+          question: "What is the onboarding survey and can I redo it?",
+          answer:
+            "The onboarding survey (role, institution, field, goals, how you heard about us) runs once after first login. It tailors template recommendations and feature highlights. To redo: contact support — there's no self-serve reset currently.",
         },
       ],
     },
     {
       id: "billing",
-      title: "Billing & Payments",
+      title: "Billing & Subscriptions",
       icon: <CreditCard className="h-5 w-5 text-purple-600" />,
       faqs: [
         {
-          question: "What payment methods do you accept?",
+          question: "What plans are available?",
           answer:
-            "We accept all major credit cards including Visa, Mastercard, American Express, and Discover. We also support PayPal and bank transfers for annual plans. All payments are processed securely through our payment partners.",
+            "Free, Plus, Researcher, Institutional. Free: core features with monthly scan limits. Plus: higher limits, team workspaces (create/manage), advanced analytics. Researcher: highest individual limits, priority support. Institutional: multi-node, sovereign storage, SSO, executive reports, dedicated support. See /pricing for current limits.",
+        },
+        {
+          question: "How do I upgrade or change my plan?",
+          answer:
+            "Settings → Billing → Upgrade Plan. Select plan, choose monthly/annual billing, enter payment details. Upgrades take effect immediately; downgrades apply at next billing cycle. Annual plans include ~20% discount.",
+        },
+        {
+          question: "What payment methods are accepted?",
+          answer:
+            "Credit/debit cards (Visa, Mastercard, Amex, Discover) via Stripe. PayPal for annual plans. Bank transfer / invoice for Institutional plans (contact sales). All payments processed securely — we don't store card details.",
         },
         {
           question: "Can I get a refund?",
           answer:
-            "We offer a 30-day money-back guarantee for new subscribers. After 30 days, we provide pro-rated refunds for unused portions of annual subscriptions. Monthly subscriptions are not eligible for refunds once the period has begun.",
+            "14-day money-back guarantee for new paid subscriptions. After 14 days: pro-rated refunds for unused portion of annual plans only. Monthly plans non-refundable once period starts. Contact support with order details.",
         },
         {
           question: "How do I cancel my subscription?",
           answer:
-            "You can cancel your subscription at any time from your billing settings. Your access will continue until the end of your current billing period. To cancel, go to Settings > Billing > Subscription Management and click 'Cancel Subscription'.",
+            "Settings → Billing → Subscription → Cancel. Access continues until end of current billing period. No further charges. You can re-subscribe anytime. Workspace projects remain accessible to other members.",
+        },
+        {
+          question: "What are credits and how do they work?",
+          answer:
+            "Credits gate AI-heavy features (Literature Matrix batch analysis, Find Papers deep search, Certificate generation). Free plan gets monthly credit allowance. Plus/Researcher get higher monthly credits. Credits don't roll over. Purchase additional credits in Settings → Billing.",
         },
       ],
     },
     {
       id: "features",
-      title: "Features & Functionality",
-      icon: <BookOpen className="h-5 w-5 text-orange-600" />,
+      title: "Core Features",
+      icon: <Zap className="h-5 w-5 text-orange-600" />,
       faqs: [
         {
-          question: "How does the AI writing assistant work?",
+          question: "What is the AI Research Assistant?",
           answer:
-            "Our AI writing assistant uses advanced natural language processing to help improve your academic writing. It can suggest improvements for clarity, coherence, and academic tone. The AI never generates content on its own but rather helps enhance your existing writing.",
+            "An explain-only AI mode (no content generation) that helps with: literature search strategy, methodology explanation, writing structure guidance, statistical concept clarification, citation style rules. Powered by GPT-4 with academic guardrails. Does not write text for you.",
         },
         {
-          question: "Is my work private when using AI features?",
+          question: "How does Citation Audit work?",
           answer:
-            "Yes, your work is completely private. We use industry-standard encryption to protect your data. Our AI models are designed to assist with writing enhancement, not to store or learn from your content. All processing happens securely and your data is not used to train our models.",
+            "Scans your document for in-text citations and reference list entries. Checks: citation format consistency, missing references, duplicate citations, unverified citations (vs. CrossRef/OpenAlex), DOI validity. Returns compliance score (0-100), per-citation confidence (High/Medium/Low), and auto-fix suggestions. Runs on-demand from left sidebar.",
         },
         {
-          question: "How accurate is the plagiarism checker?",
+          question: "Is there a plagiarism checker?",
           answer:
-            "Our plagiarism checker compares your work against billions of web pages, academic papers, and publications. It provides detailed reports with source identification and similarity percentages. While highly accurate, we recommend reviewing all results carefully as no system is 100% perfect.",
+            "No. ColabWize does not have a traditional plagiarism checker. Instead, we provide: Citation Audit (verifies your citations exist and are formatted correctly), Certificate of Authorship (cryptographically signed document provenance with authorship evidence), and AI detection (GPTZero integration flags AI-generated text). We help you prove originality, not detect copied text.",
+        },
+        {
+          question: "What databases does Find Papers search?",
+          answer:
+            "7 databases in parallel: CrossRef (DOI metadata), OpenAlex (250M+ works), arXiv (preprints), PubMed (biomedical), Semantic Scholar (AI-powered), IEEE Xplore (engineering/CS), DOAJ (open access journals). Results include credibility badges (peer-reviewed, open access, preprint, retraction status).",
+        },
+        {
+          question: "What is the Certificate of Authorship?",
+          answer:
+            "A PDF certificate (generated via Puppeteer) proving document provenance. Includes: 6 confidence dimensions (originality, citation integrity, authorship evidence, collaboration transparency, version history, AI detection), QR code for public verification, evidence categories (server-observed edits, client telemetry, citation verification). Tamper-evident — any document change invalidates the certificate.",
+        },
+        {
+          question: "What export formats are supported?",
+          answer:
+            "DOCX, PDF, LaTeX (.tex), RTF, TXT via Pandoc. Citations convert to target format's native style (BibTeX for LaTeX, numbered for DOCX, etc.). Self-plagiarism guard checks against your previous exports. Journal submission package bundles manuscript + cover letter + supplementary files.",
+        },
+      ],
+    },
+    {
+      id: "integrations",
+      title: "Integrations",
+      icon: <Globe className="h-5 w-5 text-teal-600" />,
+      faqs: [
+        {
+          question: "How do I connect Zotero?",
+          answer:
+            "In editor left sidebar → Sources panel → 'Connect Zotero'. Authorize via OAuth (Zotero.org). Your collections sync automatically. Drag papers from Sources panel into editor to insert citations. Bidirectional: changes in ColabWize can push back to Zotero (opt-in).",
+        },
+        {
+          question: "How do I connect Mendeley?",
+          answer:
+            "Same flow as Zotero: editor → Sources → 'Connect Mendeley' → OAuth via Mendeley.com. Library syncs. Note: Mendeley API has rate limits; large libraries may sync incrementally.",
+        },
+        {
+          question: "Can I import from Google Drive / OneDrive?",
+          answer:
+            "Yes. Create Project → Import tab → Google Drive or OneDrive. OAuth authorization → browse cloud storage → select .docx, .pdf, .tex files. Files download, convert via Pandoc/pdf-parse, create project. Also available in editor via 'Import' button in Documents panel.",
+        },
+        {
+          question: "What citation file formats can I import?",
+          answer:
+            ".bib (BibTeX), .ris (RIS), .enw (EndNote), .csl.json (CSL-JSON). Drag-drop into Add Citation modal or Import tab. Parsed citations added to project's Sources Library and available for insertion.",
         },
       ],
     },
     {
       id: "collaboration",
-      title: "Collaboration",
-      icon: <Users className="h-5 w-5 text-teal-600" />,
+      title: "Collaboration & Workspaces",
+      icon: <Shield className="h-5 w-5 text-indigo-600" />,
       faqs: [
+        {
+          question: "How do Team Workspaces work?",
+          answer:
+            "Dashboard → New Workspace → name it → invite members by email. Roles: Admin (manage members, delete workspace), Editor (full edit, create projects), Viewer (read, comment). All Editors co-edit in real-time via Yjs/Hocuspocus (live cursors, presence, comments). Requires Plus+ plan to create; Free users can join as Editor/Viewer.",
+        },
         {
           question: "How many people can collaborate on a document?",
           answer:
-            "There's no limit to the number of collaborators you can invite to a document. Each collaborator can have different permission levels (view, comment, or edit) which you can set when inviting them.",
+            "No hard limit. Real-time sync via Yjs CRDTs handles concurrent edits from many users. Practical limit depends on document size and network; tested with 20+ simultaneous editors. Each user sees colored cursors, selections, and presence avatars.",
         },
         {
-          question: "Can I collaborate with people who don't have an account?",
+          question: "Can I collaborate with someone without a ColabWize account?",
           answer:
-            "Yes, you can invite collaborators via email even if they don't have a ColabWize account. They'll receive an invitation to join and can participate in the collaboration without creating an account, though they'll have limited features.",
+            "No — all collaborators need a ColabWize account. Invitation emails contain a magic link to sign up or sign in. Once they have an account, they're added to the workspace with the assigned role.",
         },
         {
-          question: "How does real-time editing work?",
+          question: "How does real-time editing work technically?",
           answer:
-            "Our real-time editing feature allows multiple users to work on the same document simultaneously. Changes appear instantly for all collaborators. We use operational transformation technology to ensure all changes are properly synchronized.",
+            "Yjs CRDT (Conflict-free Replicated Data Type) on client + Hocuspocus WebSocket server. Changes propagate in ~50ms. Offline-first: edits queue locally, sync on reconnect. Awareness protocol broadcasts cursors/selections without blocking edits. Authorship evidence captured server-side per edit.",
+        },
+        {
+          question: "What are the permission levels?",
+          answer:
+            "Workspace: Admin (manage members, delete workspace, all project permissions), Editor (create/edit projects, invite Viewers), Viewer (read projects, comment). Project-level: inherits workspace role. No separate project-level roles currently.",
+        },
+      ],
+    },
+    {
+      id: "troubleshooting",
+      title: "Troubleshooting",
+      icon: <Search className="h-5 w-5 text-red-600" />,
+      faqs: [
+        {
+          question: "Editor won't load / stuck on loading",
+          answer:
+            "1) Clear browser cache/cookies for colabwize.com. 2) Try incognito/private window. 3) Check browser console for errors (F12). 4) Disable extensions (especially ad blockers, privacy tools). 5) Ensure WebSocket not blocked by firewall/VPN/corporate proxy. 6) Try different browser.",
+        },
+        {
+          question: "Real-time collaboration not syncing",
+          answer:
+            "Check: all editors have Editor+ role in workspace; WebSocket connection active (green dot in toolbar); no firewall blocking wss://api.colabwize.com/hocuspocus; try refreshing. If persistent, check status page or contact support.",
+        },
+        {
+          question: "Citation audit shows '0 citations found' but I have citations",
+          answer:
+            "Ensure citations are inserted via the Add Citation modal (not typed manually as plain text). Citations must have internal citation IDs. Run 'Re-scan' in Citation Audit panel. If imported from DOCX/LaTeX, citations may need re-linking via 'Find Missing Link'.",
+        },
+        {
+          question: "Export fails or output looks wrong",
+          answer:
+            "1) Run Citation Audit first — fix all 'High' confidence issues. 2) Check for unsupported elements (custom HTML, complex tables). 3) For LaTeX: ensure BibTeX entries valid. 4) Try simpler format (DOCX) first. 5) Large documents (>100 pages): export in chunks or contact support.",
+        },
+        {
+          question: "Zotero/Mendeley sync not working",
+          answer:
+            "1) Re-authorize in Settings → Integrations. 2) Check Zotero/Mendeley API status. 3) Large libraries (>5000 items): sync may take minutes. 4) Mendeley: rate limits may pause sync temporarily. 5) Clear integration cache in Settings → Integrations → 'Reset Connection'.",
         },
       ],
     },
@@ -138,8 +255,8 @@ const FAQPage = () => {
       category.faqs.some(
         (faq) =>
           faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          faq.answer.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+          faq.answer.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
   );
 
   return (
@@ -240,7 +357,7 @@ const FAQPage = () => {
                 Book a 30-minute session with our support team.
               </p>
               <a
-                href="https://calendly.com/audacityimpact/30min"
+                href="https://calendly.com/colabwize/30min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium inline-block">

@@ -31,9 +31,9 @@ const DocumentationPage = () => {
       icon: Zap,
       title: "Core Features",
       description:
-        "Originality Scanning, Citation Confidence, and Certificates.",
+        "AI Integrity, Citation Confidence, and Certificates.",
       articles: 4,
-      path: "/originality",
+      path: "/ai-integrity",
       color: "from-purple-500 to-pink-500",
     },
     {
@@ -90,8 +90,8 @@ const DocumentationPage = () => {
     {
       title: "Advanced Analytics Dashboard",
       description:
-        "Track your writing progress, productivity trends, and improvement over time",
-      status: "coming-soon",
+        "Premium-exclusive: track your writing progress, productivity trends, and improvement over time. Already available on the Premium plan.",
+      status: "available",
       path: "/analytics",
     },
     {
@@ -368,9 +368,15 @@ const DocumentationPage = () => {
               <div key={index} className="p-6">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Coming Soon
-                  </span>
+                  {feature.status === "available" ? (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Available
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Coming Soon
+                    </span>
+                  )}
                 </div>
                 <p className="text-gray-600 mb-4">{feature.description}</p>
                 <Link
@@ -411,9 +417,9 @@ const DocumentationPage = () => {
                 </li>
                 <li>
                   <Link
-                    to="/originality"
+                    to="/ai-integrity"
                     className="text-sm font-medium ml-1 md:ml-2">
-                    Originality Scanning
+                    AI Integrity
                   </Link>
                 </li>
                 <li>

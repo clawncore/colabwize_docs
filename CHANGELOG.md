@@ -2,6 +2,22 @@
 
 This document mirrors the in-app changelog.
 
+## 2.3.0 (Jul 2026) - Publishing Platform & Citation Rewrite
+
+The biggest export/integrity release since launch. All changes are backwards-compatible (additive API + schema).
+
+Highlights:
+
+- **Publication Export Engine** — rebuilt export around a Canonical Document Model (CDM) with per-format adapters (DOCX via Pandoc, PDF via Puppeteer, HTML, Markdown, Text) and an async Export Job system.
+- **Submission packages** — ZIP packages with asset manifests and auditable, colored citations (in-text vs reference).
+- **Real DOCX with preserved images** and a consolidated pre-export citation-audit gate.
+- **Citation normalization pipeline rewrite** (8 phases) — improved matching (compound IEEE `[3,4]`, author/year disambiguation).
+- **Cloud integrations** — Google Drive and OneDrive file pickers (scoped OAuth, security-hardened); Zotero and Mendeley reference import.
+- **Research assistant** and search-alert improvements.
+- Billing ledger hardened (idempotent holds, credit overflow from plan quota).
+
+> Note: the legacy `/api/files` export path remains for compatibility; migration to `/api/publishing` continues.
+
 ## 2.2.0 (Mar 01, 2026) - Collaboration & Team Workspaces
 
 Introducing powerful new tools for seamless teamwork: Real-Time Collaboration, Unified Team Workspaces, and Chat with PDF.

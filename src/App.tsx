@@ -14,13 +14,15 @@ import KeyboardShortcutsPage from "./components/guide/KeyboardShortcutsPage";
 import HelpCenterPage from "./components/guide/HelpCenterPage";
 
 // Core Features imports
-import OriginalityScanPage from "./components/features/OriginalityScanPage";
 
 import CitationsPage from "./components/features/CitationsPage";
+import AIIntegrityPage from "./components/features/AIIntegrityPage";
 import CertificatesPage from "./components/features/CertificatesPage";
 import LiteratureReviewPage from "./components/features/LiteratureReviewPage";
 import StudyGroupsPage from "./components/features/StudyGroupsPage";
 import TemplatesPage from "./components/features/TemplatesPage";
+import FindPapersPage from "./components/features/FindPapersPage";
+import ExportPage from "./components/features/ExportPage";
 
 // Subscription imports
 import SubscriptionPlansPage from "./components/subscription/SubscriptionPlansPage";
@@ -44,20 +46,23 @@ import RefundPolicyPage from "./components/policy/RefundPolicyPage";
 
 import ContactSupportPage from "./components/contact/ContactSupportPage";
 import AccountSetupPage from "./components/account/AccountSetupPage";
-import AccountManagementPage from "./components/account/AccountManagementPage";
 import ProfileSettingsPage from "./components/account/ProfileSettingsPage";
+import CreateProjectPage from "./components/guide/CreateProjectPage";
 
 import BillingPage from "./components/billing/BillingPage";
+import IntegrationsPage from "./components/integration/IntegrationsPage";
 
 import NotFoundPage from "./pages/not-found";
 import { Toaster } from "./components/ui/toaster";
 
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ScrollRestoration } from "./components/docs/DocBlocks";
 
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
+        <ScrollRestoration />
         <Routes>
           {/* Documentation routes */}
           <Route path="/" element={<DocsLayout />}>
@@ -67,8 +72,9 @@ function App() {
             <Route path="installation" element={<InstallationPage />} />
             <Route path="account-setup" element={<AccountSetupPage />} />
             <Route path="features" element={<FeaturesDocsPage />} />
-            <Route path="account" element={<AccountManagementPage />} />
+            <Route path="account" element={<ProfileSettingsPage />} />
             <Route path="profile" element={<ProfileSettingsPage />} />
+            <Route path="create-project" element={<CreateProjectPage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="privacy-policy" element={<PrivacySecurityPage />} />
             <Route path="faq" element={<FAQPage />} />
@@ -81,15 +87,20 @@ function App() {
             />
             <Route path="help" element={<HelpCenterPage />} />
             {/* Core Features routes */}
-            <Route path="originality" element={<OriginalityScanPage />} />
+            <Route path="originality" element={<AIIntegrityPage />} />
 
             <Route path="citations" element={<CitationsPage />} />
+            <Route path="ai-integrity" element={<AIIntegrityPage />} />
+            <Route path="find-papers" element={<FindPapersPage />} />
             <Route path="certificates" element={<CertificatesPage />} />
 
             {/* Subscription routes */}
             <Route path="plans" element={<SubscriptionPlansPage />} />
             <Route path="limits" element={<UsageLimitsPage />} />
             <Route path="credits" element={<CreditsPage />} />
+
+            {/* Integrations */}
+            <Route path="integrations" element={<IntegrationsPage />} />
 
             <Route path="analytics" element={<AdvancedAnalyticsPage />} />
             <Route path="terms" element={<TermsPage />} />
@@ -109,6 +120,7 @@ function App() {
             />
             <Route path="study-groups" element={<StudyGroupsPage />} />
             <Route path="templates" element={<TemplatesPage />} />
+            <Route path="export" element={<ExportPage />} />
           </Route>
           {/* 404 Page */}
           <Route path="*" element={<NotFoundPage />} />

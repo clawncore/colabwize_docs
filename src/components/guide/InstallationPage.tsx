@@ -6,7 +6,6 @@ import {
   Smartphone,
   Tablet,
   Globe,
-  Shield,
   RefreshCw,
   CheckCircle,
   ChevronDown,
@@ -14,9 +13,7 @@ import {
   Download,
   Settings,
   Play,
-  Copy,
   ExternalLink,
-  Apple,
 } from "lucide-react";
 
 const InstallationPage = () => {
@@ -29,199 +26,179 @@ const InstallationPage = () => {
       id: "web",
       icon: <Globe className="h-6 w-6" />,
       title: "Web Browser",
-      description: "No install needed - use in browser",
+      description: "Primary access — no install needed",
     },
     {
       id: "desktop",
       icon: <Monitor className="h-6 w-6" />,
-      title: "Desktop",
-      description: "Windows, macOS, Linux",
+      title: "Desktop (PWA)",
+      description: "Install as app from Chrome/Edge/Safari",
     },
     {
       id: "mobile",
       icon: <Smartphone className="h-6 w-6" />,
-      title: "Mobile",
-      description: "iOS & Android",
+      title: "Mobile (PWA)",
+      description: "Add to home screen from Safari/Chrome",
     },
     {
       id: "tablet",
       icon: <Tablet className="h-6 w-6" />,
-      title: "Tablet",
-      description: "iPad & Android tablets",
+      title: "Tablet (PWA)",
+      description: "Home screen install, split-screen support",
     },
   ];
 
   const platformSteps: Record<string, any[]> = {
     web: [
       {
-        title: "Open Your Browser",
-        description: "Use Chrome, Firefox, Safari, or Edge",
+        title: "Open a Modern Browser",
+        description: "Chrome 90+, Firefox 88+, Safari 14+, Edge 90+",
         details: [
-          "Make sure your browser is up to date",
-          "Enable JavaScript in browser settings",
-          "Allow cookies for colabwize.com",
+          "Update browser to latest version for best compatibility",
+          "Enable JavaScript and cookies for colabwize.com",
+          "Allow clipboard access for copy/paste in editor",
         ],
-        tip: "Chrome or Firefox recommended for best experience",
+        tip: "Chrome or Firefox recommended for full feature support (real-time sync, PWA install)",
       },
       {
-        title: "Go to ColabWize",
-        description: "Navigate to app.colabwize.com",
+        title: "Navigate to ColabWize",
+        description: "Go to app.colabwize.com (or your institution's custom domain)",
         details: [
-          "Type app.colabwize.com in your address bar",
-          "Bookmark the page for quick access",
-          "You can also install it as a PWA (see below)",
+          "Bookmark the URL for quick access",
+          "No download, no installer, no admin rights needed",
+          "Works behind corporate firewalls (standard HTTPS/WebSocket)",
         ],
-        tip: "Add to home screen for app-like experience",
+        tip: "If your institution uses SSO, you may be redirected to your identity provider",
       },
       {
-        title: "Create Your Account",
-        description: "Sign up with email or social login",
+        title: "Create or Sign In to Your Account",
+        description: "Email/password or Google/GitHub OAuth",
         details: [
-          "Click 'Sign Up' on the homepage",
-          "Enter your email and create a password",
-          "Or sign up with Google/GitHub",
-          "Verify your email address",
+          "New users: click 'Sign Up' → enter email, name, password",
+          "OAuth: click 'Continue with Google' or 'Continue with GitHub'",
+          "Verify email via the link sent to your inbox",
+          "Complete the one-time onboarding survey (role, institution, goals)",
         ],
-        tip: "Use your .edu email for student discounts",
         link: { text: "Account Setup Guide", url: "/account-setup" },
       },
       {
-        title: "Start Using ColabWize",
-        description: "You're ready to go!",
+        title: "You're Ready",
+        description: "Dashboard loads — create your first project",
         details: [
-          "Complete your profile for personalized experience",
-          "Create your first project",
-          "Explore the features",
+          "Click 'New Project' → choose type, template, citation style",
+          "Editor opens with real-time autosave and collaboration",
+          "All features available: citations, AI assistant, export, certificates",
         ],
-        tip: "Check out the Quick Start Guide for a walkthrough",
         link: { text: "Quick Start Guide", url: "/quickstart" },
       },
     ],
     desktop: [
       {
-        title: "Download the App",
-        description: "Get the installer for your OS",
+        title: "Open Browser & Sign In",
+        description: "Go to app.colabwize.com in Chrome, Edge, Firefox, or Safari",
         details: [
-          "Visit app.colabwize.com/download",
-          "Choose your operating system:",
-          "  - Windows: .exe installer",
-          "  - macOS: .dmg file",
-          "  - Linux: .AppImage or .deb",
+          "Sign in with your ColabWize account",
+          "Your projects, settings, and workspaces sync from the cloud",
         ],
-        tip: "The download should start automatically",
+        tip: "No separate desktop app download — the web app IS the desktop experience",
       },
       {
-        title: "Run the Installer",
-        description: "Follow the installation wizard",
+        title: "Install as PWA (Optional but Recommended)",
+        description: "Get a windowed app with taskbar/dock icon",
         details: [
-          "Double-click the downloaded file",
-          "Windows: Click 'Yes' if prompted by UAC",
-          "macOS: Drag app to Applications folder",
-          "Linux: Make executable and run",
+          "Chrome/Edge: Menu (⋮) → 'Install ColabWize' or 'Install app'",
+          "Firefox: Address bar → install icon → 'Install'",
+          "macOS Safari: File → 'Add to Dock'",
+          "Linux: Works in Chrome/Edge/Firefox PWA install flow",
         ],
-        tip: "macOS users may need to allow app in Security settings",
+        tip: "PWA launches in its own window, works offline for cached content, auto-updates",
       },
       {
-        title: "Launch ColabWize",
-        description: "Open the application",
+        title: "Launch & Configure",
+        description: "Open the PWA shortcut from your app launcher/taskbar/dock",
         details: [
-          "Find ColabWize in your applications",
-          "Pin to taskbar/dock for quick access",
-          "Sign in with your account",
-        ],
-        tip: "Enable auto-start if you want ColabWize to open on boot",
-      },
-      {
-        title: "Configure Settings",
-        description: "Customize your experience",
-        details: [
-          "Set your preferred citation style",
-          "Configure notification preferences",
-          "Connect cloud storage (optional)",
+          "Sign in once — session persists across restarts",
+          "Set preferred citation style in Settings → Editor",
+          "Configure notification preferences (desktop notifications supported)",
         ],
         link: { text: "Profile Settings", url: "/profile" },
       },
     ],
     mobile: [
       {
-        title: "Open App Store",
-        description: "Find ColabWize in your app store",
+        title: "Open Safari (iOS) or Chrome (Android)",
+        description: "Go to app.colabwize.com — no App Store/Play Store download",
         details: [
-          "iOS: Open the App Store",
-          "Android: Open Google Play Store",
-          "Search for 'ColabWize'",
+          "Sign in with existing account or create new one",
+          "Full editor works on mobile (touch-optimized toolbar)",
+          "Real-time collaboration and cursor sync work on mobile",
         ],
-        tip: "Look for the official ColabWize logo",
+        tip: "Editor toolbar collapses to bottom bar on narrow screens; swipe to reveal sidebars",
       },
       {
-        title: "Install the App",
-        description: "Download and install",
+        title: "Install as PWA / Add to Home Screen",
+        description: "Creates a home-screen icon that opens in standalone mode",
         details: [
-          "Tap 'Get' or 'Install'",
-          "Wait for download to complete",
-          "Open the app when ready",
+          "iOS Safari: Share button → 'Add to Home Screen' → 'Add'",
+          "Android Chrome: Menu (⋮) → 'Install app' or 'Add to Home screen'",
+          "No app store review, no update lag — always latest version",
         ],
-        tip: "Requires iOS 15+ or Android 10+",
       },
       {
-        title: "Sign In or Sign Up",
-        description: "Create or access your account",
+        title: "Sign In & Enable Notifications",
+        description: "Push notifications for collaboration, deadlines, audit completion",
         details: [
-          "New users: Tap 'Create Account'",
-          "Existing users: Sign in with credentials",
-          "Enable Face ID/Touch ID for quick access",
+          "Allow notifications when browser prompts (or enable in Settings later)",
+          "Configure: collaboration alerts, citation audit done, export ready",
+          "Biometric unlock (Face ID / fingerprint) supported via browser",
         ],
         link: { text: "Account Setup Guide", url: "/account-setup" },
       },
       {
-        title: "Enable Notifications",
-        description: "Stay updated on your projects",
+        title: "Optimize for Mobile Writing",
+        description: "Settings → Editor → Mobile Layout",
         details: [
-          "Allow push notifications when prompted",
-          "Configure which notifications you want",
-          "Enable collaboration alerts",
+          "Enable 'Compact Toolbar' for more writing space",
+          'Adjust "Font Size" for comfortable reading',
+          "Use voice dictation (iOS/Android keyboard mic button) for hands-free drafting",
         ],
-        tip: "Notifications help you stay on top of deadlines",
       },
     ],
     tablet: [
       {
-        title: "Choose Your Method",
-        description: "Use app or browser",
+        title: "Open Safari (iPad) or Chrome (Android)",
+        description: "Go to app.colabwize.com — desktop-class experience",
         details: [
-          "Option 1: Install from App Store/Play Store",
-          "Option 2: Use web browser at app.colabwize.com",
-          "Option 3: Install as PWA from browser",
-        ],
-        tip: "Native app offers better offline support",
-      },
-      {
-        title: "Install ColabWize",
-        description: "Get the app on your tablet",
-        details: [
-          "Open App Store (iPad) or Play Store (Android)",
-          "Search for 'ColabWize'",
-          "Download and install",
-          "For PWA: Open in browser → Add to Home Screen",
+          "Full editor with sidebars visible simultaneously",
+          "Keyboard shortcuts work with external keyboards",
+          "Drag-and-drop citations from Sources panel into editor",
         ],
       },
       {
-        title: "Optimize for Tablet",
-        description: "Configure tablet-specific settings",
+        title: "Install as PWA",
+        description: "Standalone window, multitasking support",
         details: [
-          "Enable split-screen for research",
-          "Configure stylus support if available",
-          "Adjust font size for comfortable reading",
+          "iPad Safari: Share → 'Add to Home Screen'",
+          "Android: Menu → 'Install app'",
+          "iPadOS: Supports Stage Manager / Split View with PWA window",
         ],
-        tip: "Great for reviewing documents and taking notes",
       },
       {
-        title: "Sync Your Work",
-        description: "Access projects across devices",
+        title: "Tablet-Specific Optimizations",
+        description: "Settings tuned for tablet workflows",
         details: [
-          "Sign in with same account as other devices",
-          "Your projects sync automatically",
-          "Continue work from any device",
+          "Use Split View: research PDF on left, editor on right",
+          "Apple Pencil / stylus: handwritten annotations on PDFs (where supported)",
+          "Adjust sidebar width for comfortable touch targets",
+        ],
+      },
+      {
+        title: "Cross-Device Sync",
+        description: "Same account = same projects everywhere",
+        details: [
+          "Sign in with same credentials as desktop/mobile",
+          "Projects, citations, comments, cursor position sync automatically",
+          "Offline edits queue and sync on reconnect",
         ],
         link: { text: "Account Management", url: "/account" },
       },
@@ -252,15 +229,35 @@ const InstallationPage = () => {
           </Link>
           <div className="text-center">
             <Download className="h-16 w-16 mx-auto mb-4 text-blue-600" />
-            <h1 className="text-3xl font-bold mb-2">Installation Guide</h1>
+            <h1 className="text-3xl font-bold mb-2">Getting Started — No Installation Required</h1>
             <p className="text-lg text-gray-600">
-              Get ColabWize up and running on any device
+              ColabWize is a web-first application. Use it instantly in any browser, or install
+              as a PWA (Progressive Web App) for a native-like experience on desktop, mobile, and tablet.
             </p>
           </div>
         </div>
       </div>
 
       <div className="container-custom py-8">
+        {/* Key Point */}
+        <div className="mb-8 p-4 bg-blue-50 border border-blue-100 rounded-xl">
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 mt-0.5">
+              <Shield className="h-5 w-5 text-blue-600" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-blue-900 mb-1">
+                No Traditional Installation
+              </h3>
+              <p className="text-sm text-blue-800">
+                There is no .exe, .dmg, .apk, or App Store download. ColabWize runs entirely in
+                your browser with optional PWA installation for offline caching, standalone windows,
+                and home-screen icons. All your data syncs via the cloud.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Platform Selector */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Choose Your Platform</h2>
@@ -275,7 +272,7 @@ const InstallationPage = () => {
                 }}
                 className={`p-4 rounded-xl border-2 transition-all text-left ${
                   activePlatform === platform.id
-                    ? "border-blue-500 bg-blue-50 shadow-md"
+                    ? "border-blue-500 bg-gray-50 shadow-md"
                     : "border-gray-200 hover:border-blue-300 hover:bg-gray-50"
                 }`}>
                 <div
@@ -321,8 +318,7 @@ const InstallationPage = () => {
         {/* Installation Steps */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold mb-6">
-            Installation Steps -{" "}
-            {platforms.find((p) => p.id === activePlatform)?.title}
+            Steps - {platforms.find((p) => p.id === activePlatform)?.title}
           </h2>
           <div className="space-y-4">
             {currentSteps.map((step, index) => (
@@ -345,7 +341,7 @@ const InstallationPage = () => {
                         <CheckCircle className="h-5 w-5" />
                       </div>
                     ) : (
-                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-blue-100 text-blue-600 font-bold">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-blue-600 font-bold">
                         {index + 1}
                       </div>
                     )}
@@ -367,7 +363,7 @@ const InstallationPage = () => {
                       className={`p-2 rounded-lg transition-colors ${
                         completedSteps.includes(index)
                           ? "bg-green-100 text-green-600"
-                          : "bg-gray-100 text-gray-500 hover:bg-blue-100 hover:text-blue-600"
+                          : "bg-gray-100 text-gray-500 hover:bg-gray-100 hover:text-blue-600"
                       }`}
                       title={
                         completedSteps.includes(index)
@@ -409,7 +405,7 @@ const InstallationPage = () => {
                       {step.link && (
                         <Link
                           to={step.link.url}
-                          className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 font-medium">
+                          className="inline-flex items-center text-sm text-blue-600 hover:text-gray-700 font-medium">
                           {step.link.text}
                           <ExternalLink className="h-4 w-4 ml-1" />
                         </Link>
@@ -428,7 +424,7 @@ const InstallationPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               to="/account-setup"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
               <Settings className="h-6 w-6 text-blue-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Account Setup</h3>
@@ -439,7 +435,7 @@ const InstallationPage = () => {
             </Link>
             <Link
               to="/quickstart"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
               <Play className="h-6 w-6 text-green-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Quick Start</h3>
@@ -450,7 +446,7 @@ const InstallationPage = () => {
             </Link>
             <Link
               to="/troubleshooting"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
               <RefreshCw className="h-6 w-6 text-orange-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Troubleshooting</h3>
@@ -460,30 +456,28 @@ const InstallationPage = () => {
           </div>
         </div>
 
-        {/* Troubleshooting */}
+        {/* Support */}
         <div className="p-6 bg-gray-50 rounded-xl">
           <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold mb-3">Common Issues</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start text-sm">
+              <h3 className="font-semibold mb-3">Common Questions</h3>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-600">
-                    App won't start - restart device and try again
-                  </span>
+                  <span>"App won't load" — clear browser cache, check internet, try incognito</span>
                 </li>
-                <li className="flex items-start text-sm">
+                <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-600">
-                    Installation fails - check internet connection
-                  </span>
+                  <span>"PWA install not showing" — use Chrome/Edge/Safari; must be on HTTPS</span>
                 </li>
-                <li className="flex items-start text-sm">
+                <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-600">
-                    Can't sign in - reset password or contact support
-                  </span>
+                  <span>"Can't sign in" — reset password at /login or contact support</span>
+                </li>
+                <li className="flex items-start text-gray-600">
+                  <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
+                  <span>"Real-time sync fails" — check WebSocket not blocked by firewall/VPN</span>
                 </li>
               </ul>
             </div>
@@ -505,7 +499,7 @@ const InstallationPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-blue-600 hover:underline text-sm">
-                  → Join Community
+                  → Join Discord Community
                 </a>
               </div>
             </div>
