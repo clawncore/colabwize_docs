@@ -9,8 +9,8 @@ Yearly billing is billed annually and advertised as "SAVE 20%".
 | Plan | Monthly | Yearly (billed annually) | Notes |
 | --- | ---: | ---: | --- |
 | Free | $0 | $0 | Forever free |
-| Student | $4.99/mo | $47.90/year | $3.99/mo effective on yearly |
-| Researcher | $12.99/mo | $124.70/year | $10.39/mo effective on yearly |
+| Plus | $5.99/mo | $57.50/year | $4.79/mo effective on yearly |
+| Premium | $12.99/mo | $124.70/year | $10.39/mo effective on yearly |
 
 ### Free
 
@@ -29,7 +29,7 @@ Locked:
 - Advanced analytics
 - All export formats
 
-### Student
+### Plus
 
 - 50 document scans per month
 - Full document originality map
@@ -47,7 +47,7 @@ Locked:
 - Draft comparison
 - Unlimited scanning
 
-### Researcher
+### Premium
 
 - Unlimited document scans
 - Full document originality

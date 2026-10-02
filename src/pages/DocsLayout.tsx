@@ -89,9 +89,9 @@ const DocsLayout = () => {
       title: "Core Features",
       items: [
         {
-          id: "originality",
-          label: "Originality Scanning",
-          path: "/originality",
+          id: "ai-integrity",
+          label: "AI Integrity",
+          path: "/ai-integrity",
         },
 
         {
@@ -405,7 +405,7 @@ const DocsLayout = () => {
                               to={item.path}
                               className={`flex items-center justify-between px-3 py-2 text-sm rounded-md ${
                                 isActive
-                                  ? "bg-blue-50 text-blue-700 font-medium bg-blue-900/30 text-blue-400 tab-active"
+                                  ? "bg-gray-50 text-gray-600 font-medium bg-blue-900/30 text-blue-400 tab-active"
                                   : "text-gray-700 hover:bg-gray-50 text-gray-300 hover:bg-gray-300"
                               } ${transitionClasses}`}
                               onClick={() => setMobileMenuOpen(false)}>
@@ -429,7 +429,7 @@ const DocsLayout = () => {
             <div className="p-4 border-t border-gray-200 border-gray-700">
               <Link
                 to="/help"
-                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100 text-blue-400 bg-blue-900/30 hover:bg-blue-900/50 accent-button">
+                className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-blue-600 bg-gray-50 rounded-md hover:bg-gray-100 text-blue-400 bg-blue-900/30 hover:bg-blue-900/50 accent-button">
                 Visit Help Center
               </Link>
             </div>

@@ -9,6 +9,12 @@ import {
   User,
   FileText,
   AlertTriangle,
+  Shield,
+  CheckCircle,
+  Send,
+  Ticket,
+  Loader2,
+  ExternalLink,
 } from "lucide-react";
 import { useState } from "react";
 import ContactService from "../../lib/utils/contactService";
@@ -32,10 +38,11 @@ const ContactSupportPage = () => {
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
+    ticketNumber?: string;
   }>({ type: null, message: "" });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -106,12 +113,12 @@ const ContactSupportPage = () => {
     setSubmitStatus({ type: null, message: "" });
 
     try {
-      // Send form data to backend support service using the proper service
+      // Send form data to backend support service
       const result = await ContactService.submitContactForm(
         formData.name,
         formData.email,
         formData.subject,
-        formData.message
+        formData.message,
       );
 
       if (result.success) {
@@ -119,6 +126,7 @@ const ContactSupportPage = () => {
           type: "success",
           message:
             "Thank you for your message! We'll get back to you within 24 hours.",
+          ticketNumber: result.ticketNumber,
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
@@ -140,56 +148,83 @@ const ContactSupportPage = () => {
 
   const supportOptions = [
     {
-      title: "Schedule a Meeting",
-      description: "Book a 30-minute session with our support team",
-      icon: <MessageCircle className="h-6 w-6 text-blue-600" />,
-      availability: "Available Mon-Fri 9AM-5PM EST",
-      action: "Schedule Now",
+      title: "Contact Form (Recommended)",
+      description: "Submit a ticket — get a ticket number and email confirmation",
+      icon: <Send className="h-6 w-6 text-blue-600" />,
+      availability: "24/7 — Response within 24 hours",
+      action: "Submit Ticket",
+      primary: true,
     },
     {
       title: "Email Support",
-      description: "Send us a detailed message",
+      description: "Direct email to our support team",
       icon: <Mail className="h-6 w-6 text-green-600" />,
-      availability: "24/7 - Response within 24 hours",
-      action: "Send Email",
+      availability: "24/7 — Response within 24 hours",
+      action: "support@colabwize.com",
+      href: "mailto:support@colabwize.com",
     },
     {
-      title: "Phone Support",
-      description: "Speak directly with a support representative",
-      icon: <Phone className="h-6 w-6 text-purple-600" />,
-      availability: "Mon-Fri 9AM-8PM EST",
-      action: "Call Now",
-      isPhone: true,
-      phoneNumbers: ["+919063586568", "+918790813536"],
+      title: "Billing & Payments",
+      description: "Subscription, invoices, refunds, payment issues",
+      icon: <FileText className="h-6 w-6 text-orange-600" />,
+      availability: "Mon-Fri 9AM-5PM EST",
+      action: "billing@colabwize.com",
+      href: "mailto:billing@colabwize.com",
     },
     {
-      title: "Community Support",
-      description: "Connect with other users and get help from the community",
+      title: "Security Issues",
+      description: "Report vulnerabilities, data concerns, account compromise",
+      icon: <Shield className="h-6 w-6 text-red-600" />,
+      availability: "24/7 — Priority response",
+      action: "security@colabwize.com",
+      href: "mailto:security@colabwize.com",
+    },
+    {
+      title: "Privacy & GDPR",
+      description: "Data access, deletion, portability, compliance questions",
+      icon: <CheckCircle className="h-6 w-6 text-purple-600" />,
+      availability: "Mon-Fri 9AM-5PM EST",
+      action: "privacy@colabwize.com",
+      href: "mailto:privacy@colabwize.com",
+    },
+    {
+      title: "Institutional Sales",
+      description: "University/Enterprise plans, SSO, volume licensing",
+      icon: <Users className="h-6 w-6 text-indigo-600" />,
+      availability: "Mon-Fri 9AM-5PM EST",
+      action: "sales@colabwize.com",
+      href: "mailto:sales@colabwize.com",
+    },
+    {
+      title: "Community Discord",
+      description: "Connect with other users, get peer help, feature discussions",
       icon: <MessageCircle className="h-6 w-6 text-indigo-600" />,
-      availability: "24/7 - Community members ready to help",
-      action: "Join Community",
+      availability: "24/7 — Community & staff",
+      action: "Join Discord",
+      href: "https://discord.gg/colabwize",
+      external: true,
     },
   ];
 
   const commonTopics = [
     {
       title: "Account Issues",
-      description: "Login problems, password resets, account access",
+      description: "Login problems, password resets, account access, MFA",
       icon: <User className="h-5 w-5 text-blue-600" />,
     },
     {
       title: "Billing Questions",
-      description: "Subscription changes, payment issues, refunds",
+      description: "Subscription changes, payment issues, invoices, refunds",
       icon: <FileText className="h-5 w-5 text-green-600" />,
     },
     {
       title: "Technical Support",
-      description: "App issues, bugs, feature requests",
+      description: "App issues, bugs, performance, feature requests",
       icon: <AlertTriangle className="h-5 w-5 text-orange-600" />,
     },
     {
       title: "Academic Features",
-      description: "AI writing, citations, plagiarism checking",
+      description: "Citation audit, originality scan, AI detection, certificates, export",
       icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
     },
   ];
@@ -197,124 +232,89 @@ const ContactSupportPage = () => {
   return (
     <div className="min-h-screen px-8">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white border-b border-gray-200 mb-8">
         <div className="container-custom py-6">
           <Link to="/" className="inline-flex items-center mb-4">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Documentation
           </Link>
-          <h1 className="text-3xl font-bold mb-2">Contact Support</h1>
-          <p className="text-lg text-gray-600">
-            Get help from our dedicated support team
-          </p>
+          <div className="text-center">
+            <Ticket className="h-16 w-16 mx-auto mb-4 text-blue-600" />
+            <h1 className="text-3xl font-bold mb-2">Contact Support</h1>
+            <p className="text-lg text-gray-600">
+              Get help from our dedicated support team
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="container-custom py-8">
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl p-6 text-white mb-8">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="flex-1 mb-4 md:mb-0">
-              <h2 className="text-2xl font-bold mb-2">We're Here to Help</h2>
-              <p className="opacity-90">
-                Our support team is ready to assist you with any questions or
-                issues
-              </p>
-            </div>
-            <div className="flex space-x-2">
-              <div className="bg-white/20 p-3 rounded-lg">
-                <MessageCircle className="h-6 w-6" />
+      <div className="container-custom py-8 max-w-5xl">
+        {/* How Support Works */}
+        <section className="mb-12">
+          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl p-6 text-white mb-8">
+            <div className="flex flex-col md:flex-row items-center">
+              <div className="flex-1 mb-4 md:mb-0">
+                <h2 className="text-2xl font-bold mb-2">We're Here to Help</h2>
+                <p className="opacity-90">
+                  Our support team is ready to assist you with any questions or issues.
+                  All contact form submissions receive a ticket number and email confirmation.
+                </p>
               </div>
-              <div className="bg-white/20 p-3 rounded-lg">
-                <Mail className="h-6 w-6" />
+              <div className="flex space-x-2">
+                <div className="bg-white/20 p-3 rounded-lg"><Ticket className="h-6 w-6" /></div>
+                <div className="bg-white/20 p-3 rounded-lg"><Mail className="h-6 w-6" /></div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Support Options</h2>
-            <div className="space-y-4">
-              {supportOptions.map((option, index) => (
-                <div key={index} className="p-5">
-                  <div className="flex items-center mb-3">
-                    <div className="flex-shrink-0 mr-3">{option.icon}</div>
-                    <h3 className="text-lg font-semibold">{option.title}</h3>
-                  </div>
-                  <p className="text-gray-600 mb-3">{option.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      <Clock className="h-3 w-3 mr-1" />
-                      {option.availability}
-                    </span>
-                    {option.title === "Community Support" ? (
-                      <a
-                        href="https://discord.gg/2MMSdX3Uee"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium text-sm">
-                        {option.action}
-                      </a>
-                    ) : option.title === "Schedule a Meeting" ? (
-                      <a
-                        href="https://calendly.com/audacityimpact/30min"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium text-sm">
-                        {option.action}
-                      </a>
-                    ) : option.isPhone ? (
-                      <button
-                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium text-sm cursor-pointer"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // Try primary number first
-                          window.location.href = `tel:${option.phoneNumbers[0]}`;
-                          // Set a timeout to try secondary number if primary fails
-                          setTimeout(() => {
-                            window.location.href = `tel:${option.phoneNumbers[1]}`;
-                          }, 3000);
-                        }}>
-                        {option.action}
-                      </button>
-                    ) : (
-                      <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium text-sm">
-                        {option.action}
-                      </button>
-                    )}
-                  </div>
+          {/* Support Process */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">How Our Support Works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="border border-gray-200 rounded-xl p-6 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-blue-600 mb-4">
+                  <Send className="h-6 w-6" />
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-5">
-              <h3 className="text-lg font-semibold mb-2">Emergency Support</h3>
-              <p className="text-blue-800 mb-3">
-                For critical issues affecting your academic work, contact us
-                immediately:
-              </p>
-              <p className="text-blue-800 font-medium mb-3">
-                Emergency: support@colabwize.com
-              </p>
-              <button
-                className="text-blue-800 font-medium underline cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Try primary number first
-                  window.location.href = "tel:+919063586568";
-                  // Set a timeout to try secondary number if primary fails
-                  setTimeout(() => {
-                    window.location.href = "tel:+918790813536";
-                  }, 3000);
-                }}>
-                Call Emergency Support (+91 90635 86568 or +91 87908 13536)
-              </button>
+                <h3 className="font-semibold mb-2">1. Submit</h3>
+                <p className="text-gray-600 text-sm">
+                  Fill out the form or email us. Get instant ticket number (CW-YYYY-XXXX).
+                </p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-6 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-600 mb-4">
+                  <Mail className="h-6 w-6" />
+                </div>
+                <h3 className="font-semibold mb-2">2. Confirm</h3>
+                <p className="text-gray-600 text-sm">
+                  Receive email confirmation with ticket number and expected response time.
+                </p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-6 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                  <Shield className="h-6 w-6" />
+                </div>
+                <h3 className="font-semibold mb-2">3. Investigate</h3>
+                <p className="text-gray-600 text-sm">
+                  Team reviews your ticket. Discord alerts for urgent issues (billing, security).
+                </p>
+              </div>
+              <div className="border border-gray-200 rounded-xl p-6 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 mb-4">
+                  <CheckCircle className="h-6 w-6" />
+                </div>
+                <h3 className="font-semibold mb-2">4. Resolve</h3>
+                <p className="text-gray-600 text-sm">
+                  Response within 24 hours. Ticket marked resolved. Follow-up if needed.
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-
+        {/* Contact Form */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Submit a Support Ticket</h2>
+          <div className="bg-white border border-gray-200 rounded-2xl p-8">
             {/* Status Message */}
             {submitStatus.type && (
               <div
@@ -323,15 +323,18 @@ const ContactSupportPage = () => {
                     ? "bg-green-50 text-green-800 border border-green-200"
                     : "bg-red-50 text-red-800 border border-red-200"
                 }`}>
-                {submitStatus.message}
+                {submitStatus.ticketNumber && (
+                  <p className="font-semibold mb-2">
+                    Your ticket number: <code className="bg-gray-100 px-2 py-1 rounded">{submitStatus.ticketNumber}</code>
+                  </p>
+                )}
+                <p>{submitStatus.message}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium mb-1">
+                <label htmlFor="name" className="block text-sm font-medium mb-1">
                   Full Name
                 </label>
                 <input
@@ -341,7 +344,7 @@ const ContactSupportPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     errors.name
                       ? "border-red-500"
                       : "border-gray-300 focus:border-blue-500"
@@ -353,9 +356,7 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium mb-1">
+                <label htmlFor="email" className="block text-sm font-medium mb-1">
                   Email Address
                 </label>
                 <input
@@ -365,7 +366,7 @@ const ContactSupportPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     errors.email
                       ? "border-red-500"
                       : "border-gray-300 focus:border-blue-500"
@@ -377,9 +378,7 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium mb-1">
+                <label htmlFor="subject" className="block text-sm font-medium mb-1">
                   Subject
                 </label>
                 <input
@@ -389,7 +388,7 @@ const ContactSupportPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     errors.subject
                       ? "border-red-500"
                       : "border-gray-300 focus:border-blue-500"
@@ -401,23 +400,22 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-1">
+                <label htmlFor="message" className="block text-sm font-medium mb-1">
                   Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={5}
+                  rows={6}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     errors.message
                       ? "border-red-500"
                       : "border-gray-300 focus:border-blue-500"
-                  }`}></textarea>
+                  }`}
+                ></textarea>
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-600">{errors.message}</p>
                 )}
@@ -426,20 +424,79 @@ const ContactSupportPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium ${
+                className={`w-full px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors ${
                   isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                 }`}>
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin mr-2" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-5 w-5 mr-2" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
-        </div>
+        </section>
 
-        <div className="mb-12">
+        {/* Support Options */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold mb-6">Other Ways to Reach Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {supportOptions.map((option, index) => (
+              <div
+                key={index}
+                className={`p-6 rounded-xl border ${
+                  option.primary
+                    ? "border-blue-300 bg-blue-50"
+                    : "border-gray-200 hover:border-blue-300 transition-colors"
+                }`}>
+                <div className="flex items-center mb-4">
+                  <div className="flex-shrink-0 mr-3">{option.icon}</div>
+                  <h3 className="text-lg font-semibold">{option.title}</h3>
+                </div>
+                <p className="text-gray-600 mb-4">{option.description}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
+                    <Clock className="h-3 w-3 mr-1" />
+                    {option.availability}
+                  </span>
+                </div>
+                {option.href ? (
+                  <a
+                    href={option.href}
+                    target={option.external ? "_blank" : undefined}
+                    rel={option.external ? "noopener noreferrer" : undefined}
+                    className={`inline-flex items-center w-full justify-center px-4 py-2 rounded-lg font-medium text-sm ${
+                      option.primary
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}>
+                    {option.action}
+                    {option.external && <ExternalLink className="h-4 w-4 ml-2" />}
+                  </a>
+                ) : (
+                  <button
+                    className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium text-sm"
+                    disabled={!option.primary}>
+                    {option.action}
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Common Topics */}
+        <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Common Support Topics</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {commonTopics.map((topic, index) => (
-              <div key={index} className="p-5">
+              <div key={index} className="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
                 <div className="flex items-center mb-3">
                   <div className="flex-shrink-0 mr-3">{topic.icon}</div>
                   <h3 className="text-lg font-semibold">{topic.title}</h3>
@@ -448,72 +505,133 @@ const ContactSupportPage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="p-6">
+        {/* Before Contacting Support */}
+        <section className="mb-12">
           <h2 className="text-2xl font-bold mb-4">Before Contacting Support</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-3">
-                Check Our Resources
-              </h3>
-              <ul className="space-y-2">
+            <div className="border border-gray-200 rounded-xl p-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-600" /> Check Our Resources</h3>
+              <ul className="space-y-3">
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                  </div>
                   <span className="text-gray-600">
-                    <Link to="/faq" className="text-blue-600 hover:underline">
-                      Browse our FAQ
-                    </Link>{" "}
-                    for quick answers
+                    <Link to="/faq" className="text-blue-600 hover:underline">Browse our FAQ</Link> for quick answers
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                  </div>
                   <span className="text-gray-600">
-                    <Link
-                      to="/troubleshooting"
-                      className="text-blue-600 hover:underline">
-                      Try troubleshooting steps
-                    </Link>
+                    <Link to="/troubleshooting" className="text-blue-600 hover:underline">Troubleshooting guide</Link> — including{" "}
+                    <Link to="/troubleshooting#cant-sign-in" className="text-blue-600 hover:underline">Can't sign in</Link>{" "}
+                    and{" "}
+                    <Link to="/troubleshooting#a-paid-feature-is-locked" className="text-blue-600 hover:underline">A paid feature is locked</Link>
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                  </div>
                   <span className="text-gray-600">
-                    Check our
-                    <Link to="/" className="text-blue-600 hover:underline">
-                      {" "}
-                      documentation
-                    </Link>
+                    Check our <Link to="/" className="text-blue-600 hover:underline">documentation</Link> for feature guides
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-blue-600"></div>
+                  </div>
+                  <span className="text-gray-600">
+                    <Link to="/roadmap" className="text-blue-600 hover:underline">Roadmap</Link> for upcoming features
                   </span>
                 </li>
               </ul>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-3">
-                Prepare Information
-              </h3>
-              <ul className="space-y-2">
+            <div className="border border-gray-200 rounded-xl p-6">
+              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-600" /> Prepare Information</h3>
+              <ul className="space-y-3">
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
-                  <span className="text-gray-600">
-                    Your account email address
-                  </span>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-gray-600"></div>
+                  </div>
+                  <span className="text-gray-600">Your account email address</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
-                  <span className="text-gray-600">Details about the issue</span>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-gray-600"></div>
+                  </div>
+                  <span className="text-gray-600">Current plan (Free/Plus/Premium)</span>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-3 mt-2"></div>
-                  <span className="text-gray-600">
-                    Screenshots if applicable
-                  </span>
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-gray-600"></div>
+                  </div>
+                  <span className="text-gray-600">Details about the issue (what, when, how often)</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-gray-600"></div>
+                  </div>
+                  <span className="text-gray-600">Screenshots or screen recordings if applicable</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
+                    <div className="h-2 w-2 rounded-full bg-gray-600"></div>
+                  </div>
+                  <span className="text-gray-600">Browser/OS and any error messages</span>
                 </li>
               </ul>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Ticket Info */}
+        <section className="mb-12">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+            <div className="flex items-start gap-3">
+              <Ticket className="h-6 w-6 text-amber-600 mt-0.5 flex-shrink-0" />
+              <div className="text-amber-800">
+                <h3 className="font-semibold mb-2">Ticket Numbers</h3>
+                <p className="text-sm mb-2">
+                  All contact form submissions receive a ticket number in the format
+                  <code className="bg-white px-1.5 py-0.5 rounded">CW-YYYY-XXXX</code>
+                  (e.g., CW-2026-0042). Save this number to check status or follow up.
+                </p>
+                <p className="text-sm">
+                  You'll receive an email confirmation with your ticket number.
+                  Our team also receives the ticket in our Discord support channel for immediate triage.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Emergency */}
+        <section className="mb-12">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-6">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="h-6 w-6 text-red-600 mt-0.5 flex-shrink-0" />
+              <div className="text-red-800">
+                <h3 className="font-semibold mb-2">Emergency / Critical Issues</h3>
+                <p className="text-sm mb-2">
+                  For critical issues affecting your academic work (data loss, account compromise, security breach):
+                </p>
+                <ul className="space-y-1 text-sm pl-5 list-disc">
+                  <li>Email <a href="mailto:security@colabwize.com" className="underline">security@colabwize.com</a> (24/7 monitoring)</li>
+                  <li>Include "URGENT" in subject line</li>
+                  <li>Describe the issue and impact on your work</li>
+                </ul>
+                <p className="text-sm mt-2">
+                  For billing emergencies: <a href="mailto:billing@colabwize.com" className="underline">billing@colabwize.com</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
