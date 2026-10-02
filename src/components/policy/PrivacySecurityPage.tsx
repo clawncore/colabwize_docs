@@ -17,6 +17,8 @@ import {
   Server,
   Bug,
   Clock,
+  Cookie,
+  School,
 } from "lucide-react";
 
 const PrivacySecurityPage = () => {

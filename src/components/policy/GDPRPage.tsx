@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Shield, User, Lock, FileText, CheckCircle, Database, Mail, Download, Trash2, Eye, Settings, AlertCircle } from "lucide-react";
+import { ArrowLeft, Shield, User, Lock, FileText, CheckCircle, Database, Mail, Download, Trash2, Eye, Settings, AlertCircle, Building } from "lucide-react";
 
 const GDPRPage = () => {
   return (
@@ -104,7 +104,7 @@ const GDPRPage = () => {
                 <p>• <strong>Self-service:</strong> Settings → Billing shows plan, usage, credits, cycle dates</p>
                 <p>• <strong>Full export:</strong> Settings → Danger Zone → "Download Your Data" (documents, citations, profile, integrations)</p>
                 <p>• <strong>API:</strong> <code>GET /api/user/data-export</code> initiates export; poll for completion</p>
-                <p>• <strong>Response time:</strong> Within 30 days (typically <24h for self-service)</p>
+                <p>• <strong>Response time:</strong> Within 30 days (typically {"<24h"} for self-service)</p>
               </div>
             </div>
 
@@ -367,7 +367,7 @@ const GDPRPage = () => {
         {/* CTA */}
         <div className="p-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl text-white text-center">
           <h3 className="text-xl font-semibold mb-2">GDPR Questions or Rights Requests?</h3>
-          <p className="opacity-90 mb-4">Contact our Data Protection Officer — we respond within 30 days (typically <24h).</p>
+          <p className="opacity-90 mb-4">Contact our Data Protection Officer — we respond within 30 days (typically {"<24h"}).</p>
           <a href="mailto:dpo@colabwize.com" className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">Contact DPO</a>
         </div>
       </div>

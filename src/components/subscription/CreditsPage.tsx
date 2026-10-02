@@ -9,6 +9,7 @@ import {
   CreditCard,
   AlertCircle,
   RefreshCw,
+  XCircle,
 } from "lucide-react";
 
 const CreditsPage = () => {

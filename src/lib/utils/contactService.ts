@@ -7,7 +7,7 @@ class ContactService {
     email: string,
     subject: string,
     message: string
-  ): Promise<{ success: boolean; message: string }> {
+  ): Promise<{ success: boolean; message: string; ticketNumber?: string }> {
     try {
       const response = await apiClient.post("/api/contact", {
         name,
@@ -19,6 +19,7 @@ class ContactService {
       return {
         success: true,
         message: response.message,
+        ticketNumber: response.ticketNumber,
       };
     } catch (error: any) {
       console.error("Failed to submit contact form:", error);

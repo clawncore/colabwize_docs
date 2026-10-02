@@ -232,7 +232,7 @@ const CreateProjectPage = () => {
             Each card shows: name, description, type badge, citation style badge, "Public" badge if system template.
           </Step>
           <Step n={2} title="Click Use Template">
-            Opens a confirmation dialog. Auto-suggests title: <code>"{Template Name} - New Project"</code>.
+            Opens a confirmation dialog. Auto-suggests title: <code>{'"{Template Name} - New Project"'}</code>.
             You can edit title and description before creating.
           </Step>
           <Step n={3} title="Project created">

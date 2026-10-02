@@ -15,6 +15,7 @@ import {
   Ticket,
   Loader2,
   ExternalLink,
+  Users,
 } from "lucide-react";
 import { useState } from "react";
 import ContactService from "../../lib/utils/contactService";

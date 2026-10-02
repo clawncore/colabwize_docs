@@ -115,6 +115,65 @@ class FeedbackService {
     const response = await apiClient.get("/api/feedback/stats/summary");
     return response.stats;
   }
+
+  // List public feature requests (used by the Beta FeatureRequestPage)
+  async getFeatureRequests(): Promise<{
+    success: boolean;
+    requests?: any[];
+    message?: string;
+  }> {
+    try {
+      const response = await apiClient.get("/api/feature-request");
+      if (Array.isArray(response)) {
+        return { success: true, requests: response };
+      }
+      return {
+        success: response.success ?? true,
+        requests: response.requests ?? response.featureRequests ?? [],
+        message: response.message,
+      };
+    } catch (error) {
+      console.error("getFeatureRequests failed:", error);
+      return { success: false, requests: [], message: "Failed to load feature requests" };
+    }
+  }
+
+  // Vote for a feature request
+  async voteForFeature(
+    featureId: string
+  ): Promise<{ success: boolean; votes?: number; message?: string }> {
+    try {
+      const response = await apiClient.post(
+        `/api/feature-request/${featureId}/vote`,
+        {}
+      );
+      return {
+        success: response.success ?? true,
+        votes: response.votes,
+        message: response.message,
+      };
+    } catch (error) {
+      console.error("voteForFeature failed:", error);
+      return { success: false, message: "Failed to submit vote" };
+    }
+  }
+
+  // Register interest / comment on a feature request
+  async addComment(
+    featureId: string,
+    content: string
+  ): Promise<{ success: boolean; message?: string }> {
+    try {
+      const response = await apiClient.post(
+        `/api/feature-request/${featureId}/comments`,
+        { content }
+      );
+      return { success: response.success ?? true, message: response.message };
+    } catch (error) {
+      console.error("addComment failed:", error);
+      return { success: false, message: "Failed to register interest" };
+    }
+  }
 }
 
 const feedbackService = new FeedbackService();

@@ -190,9 +190,9 @@ const TemplatesPage = () => {
               <div className="space-y-2 text-sm text-gray-700">
                 <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>id</code> (UUID)</div>
                 <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>name</code> / <code>template_name</code></div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>labels</code> (JSON: [{name, color}])</div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>custom_fields</code> (JSON: [{name, type, options?}])</div>
-                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>tasks</code> (JSON: [{title, description, status}])</div>
+                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>labels</code> (JSON: {"[{name, color}]"})</div>
+                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>custom_fields</code> (JSON: {"[{name, type, options?}]"})</div>
+                <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>tasks</code> (JSON: {"[{title, description, status}]"})</div>
                 <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>is_template</code> (Boolean, default false)</div>
                 <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>template_category</code> (String?)</div>
                 <div className="bg-gray-50 p-2 rounded font-mono text-xs"><code>workspace_id</code> (FK to Workspace)</div>
@@ -250,7 +250,7 @@ const TemplatesPage = () => {
             </div>
           </div>
           <Tip>
-            Template Gallery loads both document templates (via <code>TemplateService.getTemplates({workspaceId})</code>)
+            Template Gallery loads both document templates (via <code>{"TemplateService.getTemplates({workspaceId})"}</code>)
             and task templates (via <code>WorkspaceTaskService.getTasks(workspaceId, true)</code> filtered by is_template).
           </Tip>
         </NumberedSection>
@@ -318,7 +318,7 @@ const TemplatesPage = () => {
             <div className="border border-gray-200 rounded-lg p-4">
               <h4 className="font-semibold text-gray-900 mb-2">Labels (Columns)</h4>
               <p className="text-sm text-gray-700">
-                Array of <code>{name: string, color: string}</code>. Examples: "Backlog" (gray),
+                Array of <code>{"{name: string, color: string}"}</code>. Examples: "Backlog" (gray),
                 "Literature Review" (blue), "Drafting" (yellow), "Review" (orange), "Submitted"
                 (green). Color codes used for column headers.
               </p>
@@ -326,7 +326,7 @@ const TemplatesPage = () => {
             <div className="border border-gray-200 rounded-lg p-4">
               <h4 className="font-semibold text-gray-900 mb-2">Custom Fields</h4>
               <p className="text-sm text-gray-700">
-                Array of <code>{name: string, type: "text" | "select" | "date" | "number", options?: string[]}</code>.
+                Array of <code>{'{name: string, type: "text" | "select" | "date" | "number", options?: string[]}'}</code>.
                 Examples: "Priority" (select: Low/Medium/High), "Due Date" (date), "Assignee"
                 (select: workspace members), "Word Count" (number).
               </p>
@@ -334,7 +334,7 @@ const TemplatesPage = () => {
             <div className="border border-gray-200 rounded-lg p-4">
               <h4 className="font-semibold text-gray-900 mb-2">Predefined Tasks</h4>
               <p className="text-sm text-gray-700">
-                Array of <code>{title: string, description?: string, status: string}</code>.
+                Array of <code>{"{title: string, description?: string, status: string}"}</code>.
                 Status matches label names. Tasks auto-populate when template is used.
               </p>
             </div>
@@ -358,7 +358,7 @@ const TemplatesPage = () => {
           />
           <Step n={1} title="Click Use Template">
             Opens <code>isUseTemplateOpen</code> dialog with template pre-selected. Auto-fills
-            suggested title: <code>"{template.name} - New Project"</code>.
+            suggested title: <code>{'"{template.name} - New Project"'}</code>.
           </Step>
           <Step n={2} title="Enter project details">
             Title (required), description (optional). Workspace pre-selected from current context.
@@ -430,7 +430,7 @@ const TemplatesPage = () => {
               </h3>
               <p className="text-gray-700 text-sm">
                 <code>GET /api/templates</code> (filters: type, userId, workspaceId, isPublic) →
-                returns <code>{success: true, templates: [...]}</code>. <code>GET /api/templates/type/:type</code>
+                returns <code>{"{success: true, templates: [...]}"}</code>. <code>GET /api/templates/type/:type</code>
                 → single template. <code>POST /api/templates</code> → create. <code>PUT /api/templates</code>
                 (body includes id) → update. <code>DELETE /api/templates?id=:id</code> → delete.
                 All wrapped in Express router with Next.js API route adapter.

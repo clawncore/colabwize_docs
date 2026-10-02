@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, FileText, Palette, Share2, Settings, Zap, Brain, AlertTriangle, CheckCircle2, FileArchive, Link as LinkIcon, HardDrive, Cloud, Database } from "lucide-react";
+import { ArrowLeft, Download, FileText, Palette, Share2, Settings, Zap, Brain, AlertTriangle, AlertCircle, Info, CheckCircle2, FileArchive, Link as LinkIcon, HardDrive, Cloud, Database } from "lucide-react";
 import {
   Step,
   InfoBox,
@@ -102,7 +102,7 @@ const ExportPage = () => {
               </h3>
               <p className="text-sm text-gray-600">
                 Automatic check against your previous submissions before export. Blocks or warns
-                on >20% similarity to internal work. Manual re-check available in modal.
+                on {">20%"} similarity to internal work. Manual re-check available in modal.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
@@ -251,10 +251,9 @@ const ExportPage = () => {
                 In-text citations → hyperlinks
               </h4>
               <p className="text-sm text-gray-700">
-                Citation nodes (<code><a data-citation-id="KEY"></code>) are resolved to
+                Citation nodes (<code>{'<a data-citation-id="KEY">'}</code>) are resolved to
                 formatted in-text citations per the selected style (APA, MLA, IEEE, Chicago,
-                Harvard) using <code>formatCitation()</code>. Output: <code><a
-                href="#bib-KEY">(Smith, 2023)</a></code> pointing to bibliography
+                Harvard) using <code>formatCitation()</code>. Output: <code>{'<a href="#bib-KEY">(Smith, 2023)</a>'}</code> pointing to bibliography
                 anchor.
               </p>
             </div>
@@ -264,9 +263,7 @@ const ExportPage = () => {
                 Bibliography entries → formatted paragraphs
               </h4>
               <p className="text-sm text-gray-700">
-                Bibliography nodes (<code><div data-bibliography-entry="true"
-                id="bib-KEY"></code>) are flattened to <code><p
-                id="bib-KEY" class="bibliography-entry"></code> with hanging indent CSS.
+                Bibliography nodes (<code>{'<div data-bibliography-entry="true" id="bib-KEY">'}</code>) are flattened to <code>{'<p id="bib-KEY" class="bibliography-entry">'}</code> with hanging indent CSS.
                 Preserves the <code>id</code> anchor so in-text links land correctly.
               </p>
             </div>
@@ -276,8 +273,7 @@ const ExportPage = () => {
                 Pandoc conversion
               </h4>
               <p className="text-sm text-gray-700">
-                Prepared HTML written to temp file, Pandoc invoked: <code>pandoc input.html -f
-                html -s -o output.{docx|pdf|tex|rtf|txt}</code>. Citation style passed via
+                Prepared HTML written to temp file, Pandoc invoked: <code>{"pandoc input.html -f html -s -o output.{docx|pdf|tex|rtf|txt}"}</code>. Citation style passed via
                 metadata. PDF requires wkhtmltopdf or lualatex engine installed.
               </p>
             </div>
@@ -304,7 +300,7 @@ const ExportPage = () => {
             <ul className="space-y-1 text-sm text-amber-800">
               <li>• Runs on every export attempt (Step 4)</li>
               <li>• Compares current content against your previous project versions</li>
-              <li>• Flags sections with >20% similarity and <code>isSelfPlagiarismInternal=true</code></li>
+              <li>• Flags sections with {">20%"} similarity and <code>isSelfPlagiarismInternal=true</code></li>
               <li>• If risk detected: modal confirmation required before export proceeds</li>
             </ul>
           </div>
@@ -391,7 +387,7 @@ const ExportPage = () => {
             <p className="text-sm text-gray-700">
               On export, the backend enqueues a <code>submission</code> job with PPE settings.
               Before generating the package, a citation audit pre-check runs. If the audit finds
-              blocking violations (compliance score < 70, critical issues), the job pauses in
+              blocking violations (compliance score {"< 70"}, critical issues), the job pauses in
               <code>NEEDS_REVIEW</code> state.
             </p>
           </div>

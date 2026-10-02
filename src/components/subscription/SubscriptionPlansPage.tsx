@@ -387,7 +387,7 @@ const SubscriptionPlansPage = () => {
                 <td className="px-6 py-4 text-center">25</td>
                 <td className="px-6 py-4 text-center text-purple-600 font-bold">100</td>
                 <td className="px-6 py-4 text-center">Per credit</td>
-              </li>
+              </tr>
               <tr>
                 <td className="px-6 py-4 font-medium">Certificates / Month</td>
                 <td className="px-6 py-4 text-center">0</td>

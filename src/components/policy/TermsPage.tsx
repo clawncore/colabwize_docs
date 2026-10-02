@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, FileText, Shield, CheckCircle, AlertCircle, Clock, User, Download, Trash2 } from "lucide-react";
+import { ArrowLeft, FileText, Shield, CheckCircle, AlertCircle, Clock, User, Download, Trash2, Mail } from "lucide-react";
 
 const TermsPage = () => {
   return (
@@ -164,7 +164,7 @@ const TermsPage = () => {
             <h3 className="font-semibold mb-2">5.3 Exceptions (Sole Discretion)</h3>
             <p className="mb-4">
               In rare cases of verified billing errors (duplicate charges, incorrect amount) or platform-wide outages
-              preventing core feature access for >24 hours, we may review at our sole discretion. Contact
+              preventing core feature access for {">24"} hours, we may review at our sole discretion. Contact
               <a href="mailto:billing@colabwize.com" className="text-blue-600 underline">billing@colabwize.com</a>.
             </p>
 

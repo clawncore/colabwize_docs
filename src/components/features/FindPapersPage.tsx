@@ -412,9 +412,8 @@ const FindPapersPage = () => {
                 Real-Time Single-Citation Verification
               </h3>
               <p className="text-gray-700 text-sm">
-                <code>CitationService.verifySingleCitation({title, doi})</code> checks CrossRef,
-                PubMed, arXiv, OpenAlex in sequence. Returns <code>{vault_verified: true,
-                source: 'crossref'}</code> on first match. Used for Integrity Linter fast
+                <code>{"CitationService.verifySingleCitation({title, doi})"}</code> checks CrossRef,
+                PubMed, arXiv, OpenAlex in sequence. Returns <code>{"{vault_verified: true, source: 'crossref'}"}</code> on first match. Used for Integrity Linter fast
                 feedback loop.
               </p>
             </div>

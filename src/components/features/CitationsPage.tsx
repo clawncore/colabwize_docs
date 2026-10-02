@@ -377,8 +377,7 @@ const CitationsPage = () => {
               </span>
               <span className="text-gray-700">
                 <span className="font-medium">Tiered similarity scoring</span> — results are scored
-                by text similarity: <50% = VERIFICATION_FAILED, 50-70% = Fair Match (Verified),
-                >70% = Good Match (Verified). Retracted papers trigger POTENTIAL_FABRICATION.
+                by text similarity: {"<50% = VERIFICATION_FAILED, 50-70% = Fair Match (Verified), >70% = Good Match (Verified)"}. Retracted papers trigger POTENTIAL_FABRICATION.
               </span>
             </li>
             <li className="flex items-start">
@@ -584,7 +583,7 @@ const CitationsPage = () => {
               <div>
                 <p className="font-semibold text-gray-900">MISMATCH</p>
                 <p className="text-sm text-gray-600">
-                  Author mismatch or low-confidence match (similarity <70% with author
+                  Author mismatch or low-confidence match (similarity {"<70%"} with author
                   discrepancy). The citation may point to the wrong paper.
                 </p>
               </div>

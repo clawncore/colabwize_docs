@@ -14,6 +14,7 @@ import {
   Settings,
   Play,
   ExternalLink,
+  Shield,
 } from "lucide-react";
 
 const InstallationPage = () => {

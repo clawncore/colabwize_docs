@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, ShieldCheck, Activity, FileCheck, Award, QrCode, FileText, Clock, Edit3, Brain, Search, Zap, Eye, Sparkles, Download, RotateCcw, Hash } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Activity, FileCheck, Award, QrCode, FileText, Clock, Edit3, Brain, Search, Zap, Eye, Sparkles, Download, RotateCcw, Hash, Flag } from "lucide-react";
 import {
   VideoPlaceholder,
   InfoBox,
@@ -107,7 +107,7 @@ const CertificatesPage = () => {
                 Cryptographic Verification
               </h3>
               <p className="text-sm text-gray-600">
-                Unique Certificate ID (COLABWIZE-{projectId}), QR code linking to online
+                Unique Certificate ID ({"COLABWIZE-{projectId}"}), QR code linking to online
                 verification, tamper-evident design.
               </p>
             </div>
@@ -306,7 +306,7 @@ const CertificatesPage = () => {
               <span className="text-gray-700">
                 <span className="font-medium">Overall Reliability</span> — combined score
                 (mean of 5 confidence dims + inverted anomaly risk, capped by weakest core
-                dimension). Label: High (80+), Medium (60-79), Low (35-59), Insufficient (<35).
+                dimension). Label: High (80+), Medium (60-79), Low (35-59), Insufficient ({"<35"}).
               </span>
             </li>
             <li className="flex items-start">
@@ -534,7 +534,7 @@ const CertificatesPage = () => {
                 Certificate ID & Header
               </h4>
               <p className="text-sm text-gray-700">
-                Format: <code>COLABWIZE-{projectId[:8].toUpperCase()}</code>. Header: ColabWize
+                Format: <code>{"COLABWIZE-{projectId[:8].toUpperCase()}"}</code>. Header: ColabWize
                 Platform logo (inline SVG) + "Certificate of Authorship and Academic Integrity".
               </p>
             </div>
@@ -686,7 +686,7 @@ const CertificatesPage = () => {
               <p className="text-gray-700 text-sm">
                 Triggered on certificate request. Rebuilds contributions from authorshipEvidence,
                 calculates 6 dimensions + anomaly risk, stores in authorshipConfidenceReport
-                table. Volume multiplier: <5 items=0.55, <20=0.75, >=20=1.0. Overall reliability
+                table. Volume multiplier: {"<5 items=0.55, <20=0.75,"} {">=20=1.0"}. Overall reliability
                 = min(mean, floor+15) where floor = min(attribution, contribution, evidence).
               </p>
             </div>
@@ -697,7 +697,7 @@ const CertificatesPage = () => {
               </h3>
               <p className="text-gray-700 text-sm">
                 QRCode.toDataURL with errorCorrectionLevel="H", margin=1, width=200. Verification
-                URL format: {frontendUrl}/verify/{certificateId}. Certificate includes "Verify at:
+                URL format: {"{frontendUrl}/verify/{certificateId}"}. Certificate includes "Verify at:
                 colabwize.com/verify" text.
               </p>
             </div>
@@ -708,8 +708,8 @@ const CertificatesPage = () => {
               </h3>
               <p className="text-gray-700 text-sm">
                 Conservative estimate: 20 words per AI request (not 100, because AI assists with
-                edits/suggestions, not full generation). Capped at 30%. If word_count > 500k and
-                AI% > 15%, caps at 15%. If no word count but AI used, shows 5% minimum.
+                edits/suggestions, not full generation). Capped at 30%. If {"word_count > 500k"} and
+                {"AI% > 15%"}, caps at 15%. If no word count but AI used, shows 5% minimum.
               </p>
             </div>
           </div>

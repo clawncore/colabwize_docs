@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Cookie, Settings, Shield, CheckCircle, Eye, Database, AlertCircle, Link as LinkIcon, ExternalLink } from "lucide-react";
+import { ArrowLeft, Cookie, Settings, Shield, CheckCircle, Eye, Database, AlertCircle, Mail, Link as LinkIcon, ExternalLink } from "lucide-react";
 
 const CookiesPage = () => {
   return (

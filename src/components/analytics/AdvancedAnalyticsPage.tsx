@@ -17,6 +17,7 @@ import {
   LineChart,
   PieChart,
   Activity,
+  Database,
 } from "lucide-react";
 
 const AdvancedAnalyticsPage = () => {

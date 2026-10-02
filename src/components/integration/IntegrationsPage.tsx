@@ -12,6 +12,7 @@ import {
   Download,
   Database,
   ArrowUpRight,
+  AlertTriangle,
 } from "lucide-react";
 
 const IntegrationsPage = () => {
@@ -256,7 +257,7 @@ const IntegrationsPage = () => {
               Mendeley Rate Limits
             </h3>
             <p className="text-amber-800 text-sm">
-              Mendeley API has strict rate limits. Large libraries (>5,000 items) may sync incrementally
+              Mendeley API has strict rate limits. Large libraries ({">5,000"} items) may sync incrementally
               over several minutes. If sync pauses, wait and retry — progress is preserved.
             </p>
           </div>

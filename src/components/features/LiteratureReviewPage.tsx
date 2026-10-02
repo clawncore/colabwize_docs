@@ -374,7 +374,7 @@ const LiteratureReviewPage = () => {
               </h3>
               <p className="text-gray-700 text-sm">
                 <code>POST /api/citations/:projectId/batch-analyze</code> → fetches citations
-                with abstracts (<code>abstract: { not: null }</code>). If not <code>force</code>,
+                with abstracts (<code>{"abstract: { not: null }"}</code>). If not <code>force</code>,
                 filters: <code>themes IS NULL OR themes = [] OR matrix_notes IS NULL OR
                 matrix_notes = ""</code>. Sequential loop (rate limit friendly), each calls
                 <code>OpenAIService.generateCompletion</code> with temp=0.3, maxTokens=500.
@@ -426,7 +426,7 @@ const LiteratureReviewPage = () => {
                 Integration with Find Papers
               </h3>
               <p className="text-gray-700 text-sm">
-                ResearchGapsPanel accepts <code>onSearchGap?: (keywords: string[]) => void</code>
+                ResearchGapsPanel accepts <code>{"onSearchGap?: (keywords: string[]) => void"}</code>
                 prop. When "Explore Papers" clicked, passes <code>gap.suggestedKeywords</code>
                 to parent (typically EditorWorkspacePage) which opens Sources panel and calls
                 <code>performSearch(keywords.join(" "))</code>. ContextKeywords auto-triggers

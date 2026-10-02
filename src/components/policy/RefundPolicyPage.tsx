@@ -126,7 +126,7 @@ const RefundPolicyPage = () => {
             <div className="border border-gray-200 rounded-xl p-5">
               <h3 className="font-semibold mb-2 flex items-center gap-2"><AlertCircle className="h-5 w-5 text-red-600" /> Platform-Wide Outage</h3>
               <ul className="space-y-1 text-sm text-gray-700">
-                <li>• Core features unavailable for >24 consecutive hours</li>
+                <li>• Core features unavailable for {">24"} consecutive hours</li>
                 <li>• Verified via status page and monitoring</li>
                 <li>• Not applicable to: scheduled maintenance, third-party API outages, user-specific issues</li>
               </ul>
