@@ -12,6 +12,7 @@ import {
   Download,
   Database,
   ArrowUpRight,
+  AlertTriangle,
 } from "lucide-react";
 
 const IntegrationsPage = () => {
@@ -106,7 +107,8 @@ const IntegrationsPage = () => {
     {
       name: ".bib / .ris / .csl.json Files",
       icon: <FileText className="h-8 w-8 text-purple-600" />,
-      description: "Drag-and-drop or select citation files to import references directly into your project's Sources library.",
+      description:
+        "Drag-and-drop or select citation files to import references directly into your project's Sources library.",
       features: [
         "Supports BibTeX (.bib), RIS (.ris), CSL-JSON (.csl.json), EndNote (.enw)",
         "Parsed citations added to Sources library and available for insertion",
@@ -116,7 +118,8 @@ const IntegrationsPage = () => {
     {
       name: "DOI / URL Import",
       icon: <Link2 className="h-8 w-8 text-indigo-600" />,
-      description: "Paste a DOI or URL to automatically fetch metadata from CrossRef/OpenAlex and create a citation.",
+      description:
+        "Paste a DOI or URL to automatically fetch metadata from CrossRef/OpenAlex and create a citation.",
       features: [
         "Real-time metadata lookup via CrossRef and OpenAlex",
         "Auto-populates citation fields (title, authors, journal, year, DOI, URL)",
@@ -126,7 +129,8 @@ const IntegrationsPage = () => {
     {
       name: "Overleaf (.zip)",
       icon: <Database className="h-8 w-8 text-gray-600" />,
-      description: "Import Overleaf project archives (.zip containing main.tex + assets + bibliography).",
+      description:
+        "Import Overleaf project archives (.zip containing main.tex + assets + bibliography).",
       features: [
         "Parses main.tex, extracts bibliography (.bib), converts to Tiptap JSON",
         "Citations converted to internal format with CSL-JSON metadata",
@@ -148,8 +152,9 @@ const IntegrationsPage = () => {
             <Cloud className="h-16 w-16 mx-auto mb-4 text-blue-600" />
             <h1 className="text-3xl font-bold mb-2">Integrations</h1>
             <p className="text-lg text-gray-600">
-              Connect ColabWize to the cloud storage and reference managers you already use.
-              All integrations use secure OAuth or API key authentication — tokens stored encrypted.
+              Connect ColabWize to the cloud storage and reference managers you
+              already use. All integrations use secure OAuth or API key
+              authentication — tokens stored encrypted.
             </p>
           </div>
         </div>
@@ -158,12 +163,15 @@ const IntegrationsPage = () => {
       <div className="container-custom py-8">
         {/* Main Integrations */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Cloud Storage & Reference Managers</h2>
+          <h2 className="text-2xl font-bold mb-6">
+            Cloud Storage & Reference Managers
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {integrations.map((integration) => (
               <div
                 key={integration.name}
-                className="border border-gray-200 rounded-xl p-6">
+                className="border border-gray-200 rounded-xl p-6"
+              >
                 <div className="flex items-center mb-4">
                   <div className="flex-shrink-0 mr-3">{integration.icon}</div>
                   <h3 className="text-xl font-bold">{integration.name}</h3>
@@ -173,7 +181,10 @@ const IntegrationsPage = () => {
                   {integration.features.map((feature, i) => (
                     <li key={i} className="flex items-start text-sm">
                       <FileText className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-600" dangerouslySetInnerHTML={{ __html: feature }} />
+                      <span
+                        className="text-gray-600"
+                        dangerouslySetInnerHTML={{ __html: feature }}
+                      />
                     </li>
                   ))}
                 </ul>
@@ -198,7 +209,10 @@ const IntegrationsPage = () => {
           <h2 className="text-2xl font-bold mb-6">Other Import Methods</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {otherImportMethods.map((method) => (
-              <div key={method.name} className="border border-gray-200 rounded-xl p-6">
+              <div
+                key={method.name}
+                className="border border-gray-200 rounded-xl p-6"
+              >
                 <div className="flex items-center mb-4">
                   <div className="flex-shrink-0 mr-3">{method.icon}</div>
                   <h3 className="text-xl font-bold">{method.name}</h3>
@@ -223,29 +237,39 @@ const IntegrationsPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
               <ShieldCheck className="h-8 w-8 text-blue-600 mb-3" />
-              <h3 className="font-semibold mb-2 text-blue-900">Secure by Design</h3>
+              <h3 className="font-semibold mb-2 text-blue-900">
+                Secure by Design
+              </h3>
               <p className="text-blue-800 text-sm">
-                Cloud connections use scoped OAuth. Google Drive uses <code>drive.readonly</code>,
-                OneDrive uses <code>Files.Read</code> — ColabWize can read your files but never modify them.
-                Zotero/Mendeley tokens stored encrypted in database. Tokens per connection, isolated.
+                Cloud connections use scoped OAuth. Google Drive uses{" "}
+                <code>drive.readonly</code>, OneDrive uses{" "}
+                <code>Files.Read</code> — ColabWize can read your files but
+                never modify them. Zotero/Mendeley tokens stored encrypted in
+                database. Tokens per connection, isolated.
               </p>
             </div>
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
               <Search className="h-8 w-8 text-purple-600 mb-3" />
-              <h3 className="font-semibold mb-2 text-purple-900">Search & Import</h3>
+              <h3 className="font-semibold mb-2 text-purple-900">
+                Search & Import
+              </h3>
               <p className="text-purple-800 text-sm">
-                Browse and search connected drives, then import a document or PDF into a new
-                ColabWize project for editing, citation checks, and export. Reference managers
-                sync collections to your Sources library for in-editor citation suggestions.
+                Browse and search connected drives, then import a document or
+                PDF into a new ColabWize project for editing, citation checks,
+                and export. Reference managers sync collections to your Sources
+                library for in-editor citation suggestions.
               </p>
             </div>
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <ArrowUpRight className="h-8 w-8 text-green-600 mb-3" />
-              <h3 className="font-semibold mb-2 text-green-900">Round-Trip Sync</h3>
+              <h3 className="font-semibold mb-2 text-green-900">
+                Round-Trip Sync
+              </h3>
               <p className="text-green-800 text-sm">
-                Zotero and Mendeley support bidirectional sync: import references into ColabWize,
-                then export new citations or updated metadata back to your reference manager.
-                Formatted citations in any CSL style.
+                Zotero and Mendeley support bidirectional sync: import
+                references into ColabWize, then export new citations or updated
+                metadata back to your reference manager. Formatted citations in
+                any CSL style.
               </p>
             </div>
           </div>
@@ -256,8 +280,9 @@ const IntegrationsPage = () => {
               Mendeley Rate Limits
             </h3>
             <p className="text-amber-800 text-sm">
-              Mendeley API has strict rate limits. Large libraries (>5,000 items) may sync incrementally
-              over several minutes. If sync pauses, wait and retry — progress is preserved.
+              Mendeley API has strict rate limits. Large libraries (&gt;5,000
+              items) may sync incrementally over several minutes. If sync
+              pauses, wait and retry — progress is preserved.
             </p>
           </div>
         </section>
@@ -273,7 +298,8 @@ const IntegrationsPage = () => {
             href="https://app.colabwize.com/settings/integrations"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+          >
             Go to Settings → Integrations
           </a>
         </div>

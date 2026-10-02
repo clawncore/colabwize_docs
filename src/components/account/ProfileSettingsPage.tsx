@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HelpSection } from "@/components/shared/HelpSection";
+import { HelpSection } from "../shared/HelpSection";
 import {
   ArrowLeft,
   User,
@@ -26,13 +26,23 @@ const ProfileSettingsPage = () => {
       title: "Basic Information",
       description: "Your name, profile picture, and contact details",
       icon: <User className="h-6 w-6 text-blue-600" />,
-      settings: ["Full Name", "Profile Picture", "Email Address", "Phone Number"],
+      settings: [
+        "Full Name",
+        "Profile Picture",
+        "Email Address",
+        "Phone Number",
+      ],
     },
     {
       title: "Academic Profile",
       description: "Your educational background and academic interests",
       icon: <GraduationCap className="h-6 w-6 text-green-600" />,
-      settings: ["Institution", "Academic Level", "Field of Study", "Graduation Year"],
+      settings: [
+        "Institution",
+        "Academic Level",
+        "Field of Study",
+        "Graduation Year",
+      ],
     },
     {
       title: "Writing Preferences",
@@ -49,7 +59,12 @@ const ProfileSettingsPage = () => {
       title: "Public Profile",
       description: "Control what others see on your profile",
       icon: <Globe className="h-6 w-6 text-orange-600" />,
-      settings: ["Profile Visibility", "Show Academic Information", "Display Achievements", "Social Links"],
+      settings: [
+        "Profile Visibility",
+        "Show Academic Information",
+        "Display Achievements",
+        "Social Links",
+      ],
     },
   ];
 
@@ -118,36 +133,41 @@ const ProfileSettingsPage = () => {
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-4">
-              <p className="text-sm font-semibold text-gray-900">Editable anytime</p>
+              <p className="text-sm font-semibold text-gray-900">
+                Editable anytime
+              </p>
               <p className="mt-2 text-sm text-gray-600">
                 Change anything later from Settings.
               </p>
             </div>
           </div>
 
-        {/* Video */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-2">Watch the walkthrough</h2>
-          <p className="text-gray-600 mb-2">
-            A quick tour of the profile settings screen.
-          </p>
-          <VideoPlaceholder title="Profile setup walkthrough" length="~2 minutes" />
-        </section>
+          {/* Video */}
+          <section className="mb-10">
+            <h2 className="text-2xl font-bold mb-2">Watch the walkthrough</h2>
+            <p className="text-gray-600 mb-2">
+              A quick tour of the profile settings screen.
+            </p>
+            <VideoPlaceholder
+              title="Profile setup walkthrough"
+              length="~2 minutes"
+            />
+          </section>
 
-        {/* IMAGE 1: Opening the Profile Menu */}
-        <Figure
-          src="/images/profile-settings.png"
-          alt="Opening the User Profile Menu"
-          caption="Image 1 – Opening the Profile Menu. Click the profile avatar in the upper-right corner to open the account menu, which gives quick access to profile management, documents, account settings, and logout. (Avatar, user info, and the View Profile option are highlighted; the user's name and email are blurred for privacy.)"
-        />
+          {/* IMAGE 1: Opening the Profile Menu */}
+          <Figure
+            src="/images/profile-settings.png"
+            alt="Opening the User Profile Menu"
+            caption="Image 1 – Opening the Profile Menu. Click the profile avatar in the upper-right corner to open the account menu, which gives quick access to profile management, documents, account settings, and logout. (Avatar, user info, and the View Profile option are highlighted; the user's name and email are blurred for privacy.)"
+          />
 
           <p className="text-gray-700 leading-relaxed mb-4">
             Open the menu and choose{" "}
             <span className="font-medium">View Profile</span> (or Settings →
             Profile) to reach the screen where you'll enter your details. Once
             you're there, the walkthrough below shows each step: basic
-            information, your academic profile, writing preferences, what
-            others can see, and your account security.
+            information, your academic profile, writing preferences, what others
+            can see, and your account security.
           </p>
 
           {/* IMAGE 2: Profile Management page */}
@@ -180,9 +200,9 @@ const ProfileSettingsPage = () => {
             but you can review it.
           </Step>
           <Step n={2} title="Upload a profile picture">
-            Click the camera button on the avatar circle to upload a photo
-            (JPG, PNG, or GIF, up to 5MB). A clear photo helps collaborators
-            recognize you.
+            Click the camera button on the avatar circle to upload a photo (JPG,
+            PNG, or GIF, up to 5MB). A clear photo helps collaborators recognize
+            you.
           </Step>
         </NumberedSection>
 
@@ -275,7 +295,8 @@ const ProfileSettingsPage = () => {
             </div>
             <Link
               to="/create-project"
-              className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 font-medium text-center flex-shrink-0">
+              className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 font-medium text-center flex-shrink-0"
+            >
               Create your first project
               <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
@@ -284,7 +305,9 @@ const ProfileSettingsPage = () => {
 
         {/* Account & Security (image 3: settings master) */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Manage your account and security</h2>
+          <h2 className="text-2xl font-bold mb-4">
+            Manage your account and security
+          </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
             Beyond your profile, the Settings page also controls your password,
             the research tools you connect, extra login security, and your data.
@@ -300,8 +323,8 @@ const ProfileSettingsPage = () => {
         <NumberedSection n={6} title="Update your password">
           <Step n={1} title="Open the Password section">
             From the dashboard, click your avatar in the top-right corner and
-            choose <span className="font-medium">Settings</span>. Then select the
-            Password tab (callout 1 in Image 3).
+            choose <span className="font-medium">Settings</span>. Then select
+            the Password tab (callout 1 in Image 3).
           </Step>
           <Step n={2} title="Enter your current password">
             Type your existing password in the{" "}
@@ -311,8 +334,8 @@ const ProfileSettingsPage = () => {
           <Step n={3} title="Create and confirm a new password">
             In the <span className="font-medium">New Password</span> and{" "}
             <span className="font-medium">Confirm New Password</span> fields,
-            enter your new password. The password requirements appear beneath the
-            fields so you can see what still needs to be added.
+            enter your new password. The password requirements appear beneath
+            the fields so you can see what still needs to be added.
           </Step>
           <InfoBox>
             Choose a strong password: at least 8 characters, a mix of uppercase
@@ -321,20 +344,21 @@ const ProfileSettingsPage = () => {
           </InfoBox>
           <Step n={4} title="Save the change">
             Once every requirement is met, click{" "}
-            <span className="font-medium">Update Password</span>. You stay signed
-            in on this device. Other devices may be asked to sign in again.
+            <span className="font-medium">Update Password</span>. You stay
+            signed in on this device. Other devices may be asked to sign in
+            again.
           </Step>
           <Tip>
-            A password manager (such as the one built into your browser) makes it
-            easy to create and remember a long, unique password.
+            A password manager (such as the one built into your browser) makes
+            it easy to create and remember a long, unique password.
           </Tip>
         </NumberedSection>
 
         <NumberedSection n={7} title="Connect your research tools">
           <p className="text-gray-600 mb-4">
             The Integrations section (callout 2 in Image 3) lets ColabWize work
-            with the citation managers and cloud storage you already use. Connect
-            or disconnect any service at any time.
+            with the citation managers and cloud storage you already use.
+            Connect or disconnect any service at any time.
           </p>
           <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6">
             Citation Managers
@@ -384,7 +408,9 @@ const ProfileSettingsPage = () => {
                     className="h-6 w-6 object-contain"
                   />
                 </div>
-                <h4 className="text-lg font-semibold text-gray-900">Mendeley</h4>
+                <h4 className="text-lg font-semibold text-gray-900">
+                  Mendeley
+                </h4>
               </div>
               <p className="text-sm text-gray-600 mb-3">
                 Sync your Mendeley library so your references and PDFs are
@@ -429,8 +455,8 @@ const ProfileSettingsPage = () => {
                 </h4>
               </div>
               <p className="text-sm text-gray-600 mb-3">
-                Import your Google Docs and PDFs directly from Drive. Changes you
-                make in ColabWize stay in sync with the original file.
+                Import your Google Docs and PDFs directly from Drive. Changes
+                you make in ColabWize stay in sync with the original file.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-600 text-sm">
@@ -454,12 +480,28 @@ const ProfileSettingsPage = () => {
                     viewBox="0 0 24 18"
                     className="h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
-                    aria-label="Microsoft OneDrive">
-                    <path d="M9.5 2C6.46 2 3.93 4.07 3.25 6.88C1.36 7.55 0 9.34 0 11.5C0 14.26 2.24 16.5 5 16.5H19C21.76 16.5 24 14.26 24 11.5C24 9.08 22.28 7.06 19.96 6.59C19.12 3.96 16.56 2 13.5 2C12.12 2 10.83 2.42 9.76 3.14" fill="#094AB2" />
-                    <path d="M9.5 5C7.08 5 5.06 6.72 4.59 9.04C2.89 9.39 1.59 10.86 1.5 12.64C1.5 12.76 1.5 12.88 1.5 13C1.5 15.21 3.29 17 5.5 17H12L5.5 10L9.5 5z" fill="#0364B8" />
-                    <path d="M13.5 5C11.7 5 10.12 5.93 9.28 7.35L5.5 10L12 17H19.5C21.71 17 23.5 15.21 23.5 13C23.5 10.79 21.71 9 19.5 9C19.17 9 18.85 9.04 18.54 9.11C17.84 6.73 15.85 5 13.5 5z" fill="#0078D4" />
-                    <path d="M9.28 7.35C8.81 8.13 8.5 9.03 8.5 10C8.5 10.34 8.54 10.68 8.61 11L12 17L18.54 9.11C17.84 6.73 15.85 5 13.5 5C11.7 5 10.12 5.93 9.28 7.35z" fill="#1490DF" />
-                    <path d="M4.59 9.04C4.56 9.19 4.53 9.35 4.51 9.5C4.5 9.67 4.5 9.83 4.5 10C4.5 10.34 4.54 10.68 4.61 11L8.61 11L5.5 10L4.59 9.04z" fill="#28A8EA" />
+                    aria-label="Microsoft OneDrive"
+                  >
+                    <path
+                      d="M9.5 2C6.46 2 3.93 4.07 3.25 6.88C1.36 7.55 0 9.34 0 11.5C0 14.26 2.24 16.5 5 16.5H19C21.76 16.5 24 14.26 24 11.5C24 9.08 22.28 7.06 19.96 6.59C19.12 3.96 16.56 2 13.5 2C12.12 2 10.83 2.42 9.76 3.14"
+                      fill="#094AB2"
+                    />
+                    <path
+                      d="M9.5 5C7.08 5 5.06 6.72 4.59 9.04C2.89 9.39 1.59 10.86 1.5 12.64C1.5 12.76 1.5 12.88 1.5 13C1.5 15.21 3.29 17 5.5 17H12L5.5 10L9.5 5z"
+                      fill="#0364B8"
+                    />
+                    <path
+                      d="M13.5 5C11.7 5 10.12 5.93 9.28 7.35L5.5 10L12 17H19.5C21.71 17 23.5 15.21 23.5 13C23.5 10.79 21.71 9 19.5 9C19.17 9 18.85 9.04 18.54 9.11C17.84 6.73 15.85 5 13.5 5z"
+                      fill="#0078D4"
+                    />
+                    <path
+                      d="M9.28 7.35C8.81 8.13 8.5 9.03 8.5 10C8.5 10.34 8.54 10.68 8.61 11L12 17L18.54 9.11C17.84 6.73 15.85 5 13.5 5C11.7 5 10.12 5.93 9.28 7.35z"
+                      fill="#1490DF"
+                    />
+                    <path
+                      d="M4.59 9.04C4.56 9.19 4.53 9.35 4.51 9.5C4.5 9.67 4.5 9.83 4.5 10C4.5 10.34 4.54 10.68 4.61 11L8.61 11L5.5 10L4.59 9.04z"
+                      fill="#28A8EA"
+                    />
                   </svg>
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900">
@@ -494,9 +536,9 @@ const ProfileSettingsPage = () => {
 
         <NumberedSection n={8} title="Turn on Two-Factor Authentication (2FA)">
           <p className="text-gray-600 mb-4">
-            Two-Factor Authentication (callout 3 in Image 3) adds a second step to
-            signing in. Even if someone learns your password, they cannot get into
-            your account without the code from your phone.
+            Two-Factor Authentication (callout 3 in Image 3) adds a second step
+            to signing in. Even if someone learns your password, they cannot get
+            into your account without the code from your phone.
           </p>
           <Step n={1} title="Open the 2FA section">
             On the Settings page, find the{" "}
@@ -519,7 +561,10 @@ const ProfileSettingsPage = () => {
           </InfoBox>
         </NumberedSection>
 
-        <NumberedSection n={9} title="Manage your data and account (Danger Zone)">
+        <NumberedSection
+          n={9}
+          title="Manage your data and account (Danger Zone)"
+        >
           <p className="text-gray-600 mb-4">
             The Danger Zone (callout 4 in Image 3) holds the two actions that
             affect your account the most. Use them with care.
@@ -527,7 +572,9 @@ const ProfileSettingsPage = () => {
           <div className="bg-red-50 border border-red-200 rounded-xl p-6">
             <div className="flex items-center mb-4">
               <Trash2 className="h-6 w-6 text-red-600 mr-3" />
-              <h3 className="text-lg font-semibold text-red-900">Danger Zone</h3>
+              <h3 className="text-lg font-semibold text-red-900">
+                Danger Zone
+              </h3>
             </div>
             <div className="flex items-start mb-6">
               <Download className="h-5 w-5 text-gray-600 mr-3 mt-0.5" />
@@ -572,13 +619,15 @@ const ProfileSettingsPage = () => {
                   </li>
                   <li className="flex items-start">
                     <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-2 mt-2"></div>
-                    Documents you share with others stay with those collaborators
+                    Documents you share with others stay with those
+                    collaborators
                   </li>
                 </ul>
                 <button
                   type="button"
                   disabled
-                  className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-400 rounded-lg font-medium text-sm cursor-not-allowed">
+                  className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 text-gray-400 rounded-lg font-medium text-sm cursor-not-allowed"
+                >
                   <Download className="h-4 w-4 mr-2" />
                   Download Your Data
                 </button>
@@ -631,7 +680,8 @@ const ProfileSettingsPage = () => {
                 <button
                   type="button"
                   disabled
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium text-sm opacity-60 cursor-not-allowed">
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium text-sm opacity-60 cursor-not-allowed"
+                >
                   Delete Account
                 </button>
               </div>
@@ -653,7 +703,10 @@ const ProfileSettingsPage = () => {
                   "Keep your academic information up to date",
                   "Highlight your areas of expertise",
                 ].map((t) => (
-                  <li key={t} className="flex items-start text-gray-600 text-sm">
+                  <li
+                    key={t}
+                    className="flex items-start text-gray-600 text-sm"
+                  >
                     <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-2 mt-2"></div>
                     {t}
                   </li>
@@ -661,9 +714,7 @@ const ProfileSettingsPage = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-3">
-                Account security
-              </h3>
+              <h3 className="text-lg font-semibold mb-3">Account security</h3>
               <ul className="space-y-2">
                 {[
                   "Enable two-factor authentication",
@@ -671,7 +722,10 @@ const ProfileSettingsPage = () => {
                   "Review connected integrations often",
                   "Export your data before big changes",
                 ].map((t) => (
-                  <li key={t} className="flex items-start text-gray-600 text-sm">
+                  <li
+                    key={t}
+                    className="flex items-start text-gray-600 text-sm"
+                  >
                     <div className="h-1.5 w-1.5 bg-gray-400 rounded-full mr-2 mt-2"></div>
                     {t}
                   </li>

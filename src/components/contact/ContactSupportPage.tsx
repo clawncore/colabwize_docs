@@ -15,6 +15,7 @@ import {
   Ticket,
   Loader2,
   ExternalLink,
+  Users,
 } from "lucide-react";
 import { useState } from "react";
 import ContactService from "../../lib/utils/contactService";
@@ -126,7 +127,7 @@ const ContactSupportPage = () => {
           type: "success",
           message:
             "Thank you for your message! We'll get back to you within 24 hours.",
-          ticketNumber: result.ticketNumber,
+          ticketNumber: result.ticketNumber as string | undefined,
         });
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
@@ -149,7 +150,8 @@ const ContactSupportPage = () => {
   const supportOptions = [
     {
       title: "Contact Form (Recommended)",
-      description: "Submit a ticket — get a ticket number and email confirmation",
+      description:
+        "Submit a ticket — get a ticket number and email confirmation",
       icon: <Send className="h-6 w-6 text-blue-600" />,
       availability: "24/7 — Response within 24 hours",
       action: "Submit Ticket",
@@ -197,7 +199,8 @@ const ContactSupportPage = () => {
     },
     {
       title: "Community Discord",
-      description: "Connect with other users, get peer help, feature discussions",
+      description:
+        "Connect with other users, get peer help, feature discussions",
       icon: <MessageCircle className="h-6 w-6 text-indigo-600" />,
       availability: "24/7 — Community & staff",
       action: "Join Discord",
@@ -224,7 +227,8 @@ const ContactSupportPage = () => {
     },
     {
       title: "Academic Features",
-      description: "Citation audit, originality scan, AI detection, certificates, export",
+      description:
+        "Citation audit, originality scan, AI detection, certificates, export",
       icon: <HelpCircle className="h-5 w-5 text-purple-600" />,
     },
   ];
@@ -256,13 +260,18 @@ const ContactSupportPage = () => {
               <div className="flex-1 mb-4 md:mb-0">
                 <h2 className="text-2xl font-bold mb-2">We're Here to Help</h2>
                 <p className="opacity-90">
-                  Our support team is ready to assist you with any questions or issues.
-                  All contact form submissions receive a ticket number and email confirmation.
+                  Our support team is ready to assist you with any questions or
+                  issues. All contact form submissions receive a ticket number
+                  and email confirmation.
                 </p>
               </div>
               <div className="flex space-x-2">
-                <div className="bg-white/20 p-3 rounded-lg"><Ticket className="h-6 w-6" /></div>
-                <div className="bg-white/20 p-3 rounded-lg"><Mail className="h-6 w-6" /></div>
+                <div className="bg-white/20 p-3 rounded-lg">
+                  <Ticket className="h-6 w-6" />
+                </div>
+                <div className="bg-white/20 p-3 rounded-lg">
+                  <Mail className="h-6 w-6" />
+                </div>
               </div>
             </div>
           </div>
@@ -277,7 +286,8 @@ const ContactSupportPage = () => {
                 </div>
                 <h3 className="font-semibold mb-2">1. Submit</h3>
                 <p className="text-gray-600 text-sm">
-                  Fill out the form or email us. Get instant ticket number (CW-YYYY-XXXX).
+                  Fill out the form or email us. Get instant ticket number
+                  (CW-YYYY-XXXX).
                 </p>
               </div>
               <div className="border border-gray-200 rounded-xl p-6 text-center">
@@ -286,7 +296,8 @@ const ContactSupportPage = () => {
                 </div>
                 <h3 className="font-semibold mb-2">2. Confirm</h3>
                 <p className="text-gray-600 text-sm">
-                  Receive email confirmation with ticket number and expected response time.
+                  Receive email confirmation with ticket number and expected
+                  response time.
                 </p>
               </div>
               <div className="border border-gray-200 rounded-xl p-6 text-center">
@@ -295,7 +306,8 @@ const ContactSupportPage = () => {
                 </div>
                 <h3 className="font-semibold mb-2">3. Investigate</h3>
                 <p className="text-gray-600 text-sm">
-                  Team reviews your ticket. Discord alerts for urgent issues (billing, security).
+                  Team reviews your ticket. Discord alerts for urgent issues
+                  (billing, security).
                 </p>
               </div>
               <div className="border border-gray-200 rounded-xl p-6 text-center">
@@ -304,7 +316,8 @@ const ContactSupportPage = () => {
                 </div>
                 <h3 className="font-semibold mb-2">4. Resolve</h3>
                 <p className="text-gray-600 text-sm">
-                  Response within 24 hours. Ticket marked resolved. Follow-up if needed.
+                  Response within 24 hours. Ticket marked resolved. Follow-up if
+                  needed.
                 </p>
               </div>
             </div>
@@ -322,10 +335,14 @@ const ContactSupportPage = () => {
                   submitStatus.type === "success"
                     ? "bg-green-50 text-green-800 border border-green-200"
                     : "bg-red-50 text-red-800 border border-red-200"
-                }`}>
+                }`}
+              >
                 {submitStatus.ticketNumber && (
                   <p className="font-semibold mb-2">
-                    Your ticket number: <code className="bg-gray-100 px-2 py-1 rounded">{submitStatus.ticketNumber}</code>
+                    Your ticket number:{" "}
+                    <code className="bg-gray-100 px-2 py-1 rounded">
+                      {submitStatus.ticketNumber}
+                    </code>
                   </p>
                 )}
                 <p>{submitStatus.message}</p>
@@ -334,7 +351,10 @@ const ContactSupportPage = () => {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-1"
+                >
                   Full Name
                 </label>
                 <input
@@ -356,7 +376,10 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-1"
+                >
                   Email Address
                 </label>
                 <input
@@ -378,7 +401,10 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium mb-1"
+                >
                   Subject
                 </label>
                 <input
@@ -400,7 +426,10 @@ const ContactSupportPage = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-1"
+                >
                   Message
                 </label>
                 <textarea
@@ -426,7 +455,8 @@ const ContactSupportPage = () => {
                 disabled={isSubmitting}
                 className={`w-full px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors ${
                   isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                }`}>
+                }`}
+              >
                 {isSubmitting ? (
                   <>
                     <Loader2 className="h-5 w-5 animate-spin mr-2" />
@@ -454,7 +484,8 @@ const ContactSupportPage = () => {
                   option.primary
                     ? "border-blue-300 bg-blue-50"
                     : "border-gray-200 hover:border-blue-300 transition-colors"
-                }`}>
+                }`}
+              >
                 <div className="flex items-center mb-4">
                   <div className="flex-shrink-0 mr-3">{option.icon}</div>
                   <h3 className="text-lg font-semibold">{option.title}</h3>
@@ -475,14 +506,18 @@ const ContactSupportPage = () => {
                       option.primary
                         ? "bg-blue-600 text-white hover:bg-blue-700"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}>
+                    }`}
+                  >
                     {option.action}
-                    {option.external && <ExternalLink className="h-4 w-4 ml-2" />}
+                    {option.external && (
+                      <ExternalLink className="h-4 w-4 ml-2" />
+                    )}
                   </a>
                 ) : (
                   <button
                     className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium text-sm"
-                    disabled={!option.primary}>
+                    disabled={!option.primary}
+                  >
                     {option.action}
                   </button>
                 )}
@@ -496,7 +531,10 @@ const ContactSupportPage = () => {
           <h2 className="text-2xl font-bold mb-6">Common Support Topics</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {commonTopics.map((topic, index) => (
-              <div key={index} className="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+              <div
+                key={index}
+                className="p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors"
+              >
                 <div className="flex items-center mb-3">
                   <div className="flex-shrink-0 mr-3">{topic.icon}</div>
                   <h3 className="text-lg font-semibold">{topic.title}</h3>
@@ -512,14 +550,20 @@ const ContactSupportPage = () => {
           <h2 className="text-2xl font-bold mb-4">Before Contacting Support</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-600" /> Check Our Resources</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" /> Check Our
+                Resources
+              </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-blue-600"></div>
                   </div>
                   <span className="text-gray-600">
-                    <Link to="/faq" className="text-blue-600 hover:underline">Browse our FAQ</Link> for quick answers
+                    <Link to="/faq" className="text-blue-600 hover:underline">
+                      Browse our FAQ
+                    </Link>{" "}
+                    for quick answers
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -527,10 +571,26 @@ const ContactSupportPage = () => {
                     <div className="h-2 w-2 rounded-full bg-blue-600"></div>
                   </div>
                   <span className="text-gray-600">
-                    <Link to="/troubleshooting" className="text-blue-600 hover:underline">Troubleshooting guide</Link> — including{" "}
-                    <Link to="/troubleshooting#cant-sign-in" className="text-blue-600 hover:underline">Can't sign in</Link>{" "}
+                    <Link
+                      to="/troubleshooting"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Troubleshooting guide
+                    </Link>{" "}
+                    — including{" "}
+                    <Link
+                      to="/troubleshooting#cant-sign-in"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Can't sign in
+                    </Link>{" "}
                     and{" "}
-                    <Link to="/troubleshooting#a-paid-feature-is-locked" className="text-blue-600 hover:underline">A paid feature is locked</Link>
+                    <Link
+                      to="/troubleshooting#a-paid-feature-is-locked"
+                      className="text-blue-600 hover:underline"
+                    >
+                      A paid feature is locked
+                    </Link>
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -538,7 +598,11 @@ const ContactSupportPage = () => {
                     <div className="h-2 w-2 rounded-full bg-blue-600"></div>
                   </div>
                   <span className="text-gray-600">
-                    Check our <Link to="/" className="text-blue-600 hover:underline">documentation</Link> for feature guides
+                    Check our{" "}
+                    <Link to="/" className="text-blue-600 hover:underline">
+                      documentation
+                    </Link>{" "}
+                    for feature guides
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -546,43 +610,62 @@ const ContactSupportPage = () => {
                     <div className="h-2 w-2 rounded-full bg-blue-600"></div>
                   </div>
                   <span className="text-gray-600">
-                    <Link to="/roadmap" className="text-blue-600 hover:underline">Roadmap</Link> for upcoming features
+                    <Link
+                      to="/roadmap"
+                      className="text-blue-600 hover:underline"
+                    >
+                      Roadmap
+                    </Link>{" "}
+                    for upcoming features
                   </span>
                 </li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-600" /> Prepare Information</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-green-600" /> Prepare
+                Information
+              </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-gray-600"></div>
                   </div>
-                  <span className="text-gray-600">Your account email address</span>
+                  <span className="text-gray-600">
+                    Your account email address
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-gray-600"></div>
                   </div>
-                  <span className="text-gray-600">Current plan (Free/Plus/Premium)</span>
+                  <span className="text-gray-600">
+                    Current plan (Free/Plus/Premium)
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-gray-600"></div>
                   </div>
-                  <span className="text-gray-600">Details about the issue (what, when, how often)</span>
+                  <span className="text-gray-600">
+                    Details about the issue (what, when, how often)
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-gray-600"></div>
                   </div>
-                  <span className="text-gray-600">Screenshots or screen recordings if applicable</span>
+                  <span className="text-gray-600">
+                    Screenshots or screen recordings if applicable
+                  </span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 h-5 w-5 rounded-full bg-gray-100 flex items-center justify-center mt-0.5 mr-3">
                     <div className="h-2 w-2 rounded-full bg-gray-600"></div>
                   </div>
-                  <span className="text-gray-600">Browser/OS and any error messages</span>
+                  <span className="text-gray-600">
+                    Browser/OS and any error messages
+                  </span>
                 </li>
               </ul>
             </div>
@@ -597,13 +680,18 @@ const ContactSupportPage = () => {
               <div className="text-amber-800">
                 <h3 className="font-semibold mb-2">Ticket Numbers</h3>
                 <p className="text-sm mb-2">
-                  All contact form submissions receive a ticket number in the format
-                  <code className="bg-white px-1.5 py-0.5 rounded">CW-YYYY-XXXX</code>
-                  (e.g., CW-2026-0042). Save this number to check status or follow up.
+                  All contact form submissions receive a ticket number in the
+                  format
+                  <code className="bg-white px-1.5 py-0.5 rounded">
+                    CW-YYYY-XXXX
+                  </code>
+                  (e.g., CW-2026-0042). Save this number to check status or
+                  follow up.
                 </p>
                 <p className="text-sm">
                   You'll receive an email confirmation with your ticket number.
-                  Our team also receives the ticket in our Discord support channel for immediate triage.
+                  Our team also receives the ticket in our Discord support
+                  channel for immediate triage.
                 </p>
               </div>
             </div>
@@ -616,17 +704,32 @@ const ContactSupportPage = () => {
             <div className="flex items-start gap-3">
               <AlertTriangle className="h-6 w-6 text-red-600 mt-0.5 flex-shrink-0" />
               <div className="text-red-800">
-                <h3 className="font-semibold mb-2">Emergency / Critical Issues</h3>
+                <h3 className="font-semibold mb-2">
+                  Emergency / Critical Issues
+                </h3>
                 <p className="text-sm mb-2">
-                  For critical issues affecting your academic work (data loss, account compromise, security breach):
+                  For critical issues affecting your academic work (data loss,
+                  account compromise, security breach):
                 </p>
                 <ul className="space-y-1 text-sm pl-5 list-disc">
-                  <li>Email <a href="mailto:security@colabwize.com" className="underline">security@colabwize.com</a> (24/7 monitoring)</li>
+                  <li>
+                    Email{" "}
+                    <a
+                      href="mailto:security@colabwize.com"
+                      className="underline"
+                    >
+                      security@colabwize.com
+                    </a>{" "}
+                    (24/7 monitoring)
+                  </li>
                   <li>Include "URGENT" in subject line</li>
                   <li>Describe the issue and impact on your work</li>
                 </ul>
                 <p className="text-sm mt-2">
-                  For billing emergencies: <a href="mailto:billing@colabwize.com" className="underline">billing@colabwize.com</a>
+                  For billing emergencies:{" "}
+                  <a href="mailto:billing@colabwize.com" className="underline">
+                    billing@colabwize.com
+                  </a>
                 </p>
               </div>
             </div>

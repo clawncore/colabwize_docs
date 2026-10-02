@@ -17,6 +17,8 @@ import {
   Server,
   Bug,
   Clock,
+  School,
+  Cookie,
 } from "lucide-react";
 
 const PrivacySecurityPage = () => {
@@ -31,9 +33,12 @@ const PrivacySecurityPage = () => {
           </Link>
           <div className="text-center">
             <Shield className="h-16 w-16 mx-auto mb-4 text-blue-600" />
-            <h1 className="text-3xl font-bold mb-2">Privacy & Security Overview</h1>
+            <h1 className="text-3xl font-bold mb-2">
+              Privacy & Security Overview
+            </h1>
             <p className="text-lg text-gray-600">
-              How we protect your data and respect your privacy — consolidated view
+              How we protect your data and respect your privacy — consolidated
+              view
             </p>
           </div>
         </div>
@@ -46,13 +51,18 @@ const PrivacySecurityPage = () => {
             <div className="flex-1 mb-4 md:mb-0">
               <h2 className="text-2xl font-bold mb-2">Your Privacy Matters</h2>
               <p className="opacity-90">
-                We're committed to protecting your academic work and personal information.
-                No data selling. No advertising. Academic integrity tools you control.
+                We're committed to protecting your academic work and personal
+                information. No data selling. No advertising. Academic integrity
+                tools you control.
               </p>
             </div>
             <div className="flex space-x-2">
-              <div className="bg-white/50 p-3 rounded-lg"><Shield className="h-6 w-6 text-blue-600" /></div>
-              <div className="bg-white/50 p-3 rounded-lg"><Lock className="h-6 w-6 text-green-600" /></div>
+              <div className="bg-white/50 p-3 rounded-lg">
+                <Shield className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="bg-white/50 p-3 rounded-lg">
+                <Lock className="h-6 w-6 text-green-600" />
+              </div>
             </div>
           </div>
         </div>
@@ -197,7 +207,10 @@ const PrivacySecurityPage = () => {
           </div>
 
           <div className="mt-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-            <h3 className="font-semibold mb-3 flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-600" /> Your Rights Summary</h3>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <CheckCircle className="h-5 w-5 text-green-600" /> Your Rights
+              Summary
+            </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-green-800">
               <div>
                 <p className="font-medium">GDPR (EU/UK)</p>
@@ -233,38 +246,102 @@ const PrivacySecurityPage = () => {
           <h2 className="text-2xl font-bold mb-6">Data Practices</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><Database className="h-5 w-5 text-blue-600" /> Data We Collect</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Database className="h-5 w-5 text-blue-600" /> Data We Collect
+              </h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Account: name, email, OAuth tokens (encrypted)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Profile: institution, field, level (optional)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Documents: Tiptap JSON, citations, sources</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Usage: feature counts, plan, credits, storage</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Device: browser, OS (security only)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Payments: last 4, brand (Stripe/Lemon Squeezy)</li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Account: name, email, OAuth tokens (encrypted)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Profile: institution, field, level (optional)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Documents: Tiptap JSON, citations, sources
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Usage: feature counts, plan, credits, storage
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Device: browser, OS (security only)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Payments: last 4, brand (Stripe/Lemon Squeezy)
+                </li>
               </ul>
             </div>
 
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><Shield className="h-5 w-5 text-green-600" /> How We Use Your Data</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Shield className="h-5 w-5 text-green-600" /> How We Use Your
+                Data
+              </h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Core features (contract): audits, scans, search, AI, certs, export, collab</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Security (legitimate interest): auth, fraud, reliability, abuse prevention</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Comms (consent/legitimate): transactional (Resend), marketing opt-in (EmailOctopus)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Legal (obligation): tax, law enforcement, FERPA</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> No AI training on your content</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> No data selling or advertising</li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Core features (contract): audits, scans, search, AI, certs,
+                  export, collab
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Security (legitimate interest): auth, fraud, reliability,
+                  abuse prevention
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Comms (consent/legitimate): transactional (Resend), marketing
+                  opt-in (EmailOctopus)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Legal (obligation): tax, law enforcement, FERPA
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  No AI training on your content
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  No data selling or advertising
+                </li>
               </ul>
             </div>
 
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><Lock className="h-5 w-5 text-purple-600" /> Protection Measures</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Lock className="h-5 w-5 text-purple-600" /> Protection Measures
+              </h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Encryption: TLS 1.3, AES-256, secrets encrypted</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Auth: JWT, bcrypt, MFA, OAuth, session mgmt</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Access: RBAC, RLS, Admin Guard, least privilege</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Monitoring: Pino, Sentry (PII scrubbed), audit logs</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> AppSec: Zod, DOMPurify, Prisma, CSP, rate limits</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" /> Infra: Vercel/Render/Supabase, CI/CD, backups</li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Encryption: TLS 1.3, AES-256, secrets encrypted
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Auth: JWT, bcrypt, MFA, OAuth, session mgmt
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Access: RBAC, RLS, Admin Guard, least privilege
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Monitoring: Pino, Sentry (PII scrubbed), audit logs
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  AppSec: Zod, DOMPurify, Prisma, CSP, rate limits
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2 mt-0.5" />{" "}
+                  Infra: Vercel/Render/Supabase, CI/CD, backups
+                </li>
               </ul>
             </div>
           </div>
@@ -275,22 +352,53 @@ const PrivacySecurityPage = () => {
           <h2 className="text-2xl font-bold mb-6">Privacy & Security Tips</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><Lock className="h-5 w-5 text-blue-600" /> Protect Your Account</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Lock className="h-5 w-5 text-blue-600" /> Protect Your Account
+              </h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Enable MFA (Settings → Security)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Use unique password (password manager)</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Review authorized devices periodically</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Save MFA backup codes offline</li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Enable
+                  MFA (Settings → Security)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Use
+                  unique password (password manager)
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Review
+                  authorized devices periodically
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Save
+                  MFA backup codes offline
+                </li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-semibold mb-4 flex items-center gap-2"><Eye className="h-5 w-5 text-green-600" /> Manage Your Privacy</h3>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Eye className="h-5 w-5 text-green-600" /> Manage Your Privacy
+              </h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Review Settings → Profile, AI Preferences</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Disable analytics cookies in banner</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Unsubscribe from marketing emails</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Disconnect unused integrations</li>
-                <li className="flex items-start"><CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Export data before major changes</li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Review
+                  Settings → Profile, AI Preferences
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />{" "}
+                  Disable analytics cookies in banner
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />{" "}
+                  Unsubscribe from marketing emails
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" />{" "}
+                  Disconnect unused integrations
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-4 w-4 text-green-500 mr-2" /> Export
+                  data before major changes
+                </li>
               </ul>
             </div>
           </div>
@@ -300,57 +408,94 @@ const PrivacySecurityPage = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold mb-6">Detailed Policies</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link to="/privacy" className="border border-gray-200 rounded-xl p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+            <Link
+              to="/privacy"
+              className="border border-gray-200 rounded-xl p-5 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <Shield className="h-6 w-6 text-blue-600" />
                 <div>
                   <p className="font-semibold text-gray-900">Privacy Policy</p>
-                  <p className="text-sm text-gray-600">Full details on data collection, use, rights, subprocessors</p>
+                  <p className="text-sm text-gray-600">
+                    Full details on data collection, use, rights, subprocessors
+                  </p>
                 </div>
               </div>
             </Link>
-            <Link to="/security" className="border border-gray-200 rounded-xl p-5 hover:border-green-300 hover:bg-green-50 transition-colors">
+            <Link
+              to="/security"
+              className="border border-gray-200 rounded-xl p-5 hover:border-green-300 hover:bg-green-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <Lock className="h-6 w-6 text-green-600" />
                 <div>
-                  <p className="font-semibold text-gray-900">Security Practices</p>
-                  <p className="text-sm text-gray-600">Technical measures, compliance, incident response, bug bounty</p>
+                  <p className="font-semibold text-gray-900">
+                    Security Practices
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Technical measures, compliance, incident response, bug
+                    bounty
+                  </p>
                 </div>
               </div>
             </Link>
-            <Link to="/gdpr" className="border border-gray-200 rounded-xl p-5 hover:border-purple-300 hover:bg-purple-50 transition-colors">
+            <Link
+              to="/gdpr"
+              className="border border-gray-200 rounded-xl p-5 hover:border-purple-300 hover:bg-purple-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <Database className="h-6 w-6 text-purple-600" />
                 <div>
                   <p className="font-semibold text-gray-900">GDPR Compliance</p>
-                  <p className="text-sm text-gray-600">Lawful bases, rights, DPO, transfers, subprocessors, ROPA</p>
+                  <p className="text-sm text-gray-600">
+                    Lawful bases, rights, DPO, transfers, subprocessors, ROPA
+                  </p>
                 </div>
               </div>
             </Link>
-            <Link to="/ferpa" className="border border-gray-200 rounded-xl p-5 hover:border-orange-300 hover:bg-orange-50 transition-colors">
+            <Link
+              to="/ferpa"
+              className="border border-gray-200 rounded-xl p-5 hover:border-orange-300 hover:bg-orange-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <School className="h-6 w-6 text-orange-600" />
                 <div>
-                  <p className="font-semibold text-gray-900">FERPA Compliance</p>
-                  <p className="text-sm text-gray-600">Student rights, exceptions, institutional tools, SPO</p>
+                  <p className="font-semibold text-gray-900">
+                    FERPA Compliance
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Student rights, exceptions, institutional tools, SPO
+                  </p>
                 </div>
               </div>
             </Link>
-            <Link to="/cookies" className="border border-gray-200 rounded-xl p-5 hover:border-gray-300 hover:bg-gray-50 transition-colors">
+            <Link
+              to="/cookies"
+              className="border border-gray-200 rounded-xl p-5 hover:border-gray-300 hover:bg-gray-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <Cookie className="h-6 w-6 text-gray-600" />
                 <div>
                   <p className="font-semibold text-gray-900">Cookie Policy</p>
-                  <p className="text-sm text-gray-600">Cookie types, purposes, durations, management</p>
+                  <p className="text-sm text-gray-600">
+                    Cookie types, purposes, durations, management
+                  </p>
                 </div>
               </div>
             </Link>
-            <Link to="/terms" className="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:bg-red-50 transition-colors">
+            <Link
+              to="/terms"
+              className="border border-gray-200 rounded-xl p-5 hover:border-red-300 hover:bg-red-50 transition-colors"
+            >
               <div className="flex items-center gap-3">
                 <FileText className="h-6 w-6 text-red-600" />
                 <div>
-                  <p className="font-semibold text-gray-900">Terms of Service</p>
-                  <p className="text-sm text-gray-600">Subscription, IP, acceptable use, liability, disputes</p>
+                  <p className="font-semibold text-gray-900">
+                    Terms of Service
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Subscription, IP, acceptable use, liability, disputes
+                  </p>
                 </div>
               </div>
             </Link>
@@ -360,10 +505,22 @@ const PrivacySecurityPage = () => {
         {/* CTA */}
         <div className="p-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl text-white text-center">
           <h3 className="text-xl font-semibold mb-2">Questions?</h3>
-          <p className="opacity-90 mb-4">We're transparent about our practices. Reach out anytime.</p>
+          <p className="opacity-90 mb-4">
+            We're transparent about our practices. Reach out anytime.
+          </p>
           <div className="flex justify-center gap-4">
-            <a href="mailto:privacy@colabwize.com" className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">Privacy Team</a>
-            <a href="mailto:security@colabwize.com" className="inline-flex items-center px-6 py-3 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/20">Security Team</a>
+            <a
+              href="mailto:privacy@colabwize.com"
+              className="inline-flex items-center px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+            >
+              Privacy Team
+            </a>
+            <a
+              href="mailto:security@colabwize.com"
+              className="inline-flex items-center px-6 py-3 bg-white/10 text-white rounded-lg font-medium hover:bg-white/20 transition-colors border border-white/20"
+            >
+              Security Team
+            </a>
           </div>
         </div>
       </div>

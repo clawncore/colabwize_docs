@@ -14,6 +14,7 @@ import {
   Settings,
   Play,
   ExternalLink,
+  Shield,
 } from "lucide-react";
 
 const InstallationPage = () => {
@@ -62,7 +63,8 @@ const InstallationPage = () => {
       },
       {
         title: "Navigate to ColabWize",
-        description: "Go to app.colabwize.com (or your institution's custom domain)",
+        description:
+          "Go to app.colabwize.com (or your institution's custom domain)",
         details: [
           "Bookmark the URL for quick access",
           "No download, no installer, no admin rights needed",
@@ -95,7 +97,8 @@ const InstallationPage = () => {
     desktop: [
       {
         title: "Open Browser & Sign In",
-        description: "Go to app.colabwize.com in Chrome, Edge, Firefox, or Safari",
+        description:
+          "Go to app.colabwize.com in Chrome, Edge, Firefox, or Safari",
         details: [
           "Sign in with your ColabWize account",
           "Your projects, settings, and workspaces sync from the cloud",
@@ -115,7 +118,8 @@ const InstallationPage = () => {
       },
       {
         title: "Launch & Configure",
-        description: "Open the PWA shortcut from your app launcher/taskbar/dock",
+        description:
+          "Open the PWA shortcut from your app launcher/taskbar/dock",
         details: [
           "Sign in once — session persists across restarts",
           "Set preferred citation style in Settings → Editor",
@@ -127,7 +131,8 @@ const InstallationPage = () => {
     mobile: [
       {
         title: "Open Safari (iOS) or Chrome (Android)",
-        description: "Go to app.colabwize.com — no App Store/Play Store download",
+        description:
+          "Go to app.colabwize.com — no App Store/Play Store download",
         details: [
           "Sign in with existing account or create new one",
           "Full editor works on mobile (touch-optimized toolbar)",
@@ -146,7 +151,8 @@ const InstallationPage = () => {
       },
       {
         title: "Sign In & Enable Notifications",
-        description: "Push notifications for collaboration, deadlines, audit completion",
+        description:
+          "Push notifications for collaboration, deadlines, audit completion",
         details: [
           "Allow notifications when browser prompts (or enable in Settings later)",
           "Configure: collaboration alerts, citation audit done, export ready",
@@ -212,7 +218,7 @@ const InstallationPage = () => {
   const toggleComplete = (index: number, e: React.MouseEvent) => {
     e.stopPropagation();
     setCompletedSteps((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -229,10 +235,13 @@ const InstallationPage = () => {
           </Link>
           <div className="text-center">
             <Download className="h-16 w-16 mx-auto mb-4 text-blue-600" />
-            <h1 className="text-3xl font-bold mb-2">Getting Started — No Installation Required</h1>
+            <h1 className="text-3xl font-bold mb-2">
+              Getting Started — No Installation Required
+            </h1>
             <p className="text-lg text-gray-600">
-              ColabWize is a web-first application. Use it instantly in any browser, or install
-              as a PWA (Progressive Web App) for a native-like experience on desktop, mobile, and tablet.
+              ColabWize is a web-first application. Use it instantly in any
+              browser, or install as a PWA (Progressive Web App) for a
+              native-like experience on desktop, mobile, and tablet.
             </p>
           </div>
         </div>
@@ -250,9 +259,10 @@ const InstallationPage = () => {
                 No Traditional Installation
               </h3>
               <p className="text-sm text-blue-800">
-                There is no .exe, .dmg, .apk, or App Store download. ColabWize runs entirely in
-                your browser with optional PWA installation for offline caching, standalone windows,
-                and home-screen icons. All your data syncs via the cloud.
+                There is no .exe, .dmg, .apk, or App Store download. ColabWize
+                runs entirely in your browser with optional PWA installation for
+                offline caching, standalone windows, and home-screen icons. All
+                your data syncs via the cloud.
               </p>
             </div>
           </div>
@@ -274,13 +284,15 @@ const InstallationPage = () => {
                   activePlatform === platform.id
                     ? "border-blue-500 bg-gray-50 shadow-md"
                     : "border-gray-200 hover:border-blue-300 hover:bg-gray-50"
-                }`}>
+                }`}
+              >
                 <div
                   className={`mb-3 ${
                     activePlatform === platform.id
                       ? "text-blue-600"
                       : "text-gray-500"
-                  }`}>
+                  }`}
+                >
                   {platform.icon}
                 </div>
                 <h3 className="font-semibold">{platform.title}</h3>
@@ -328,13 +340,15 @@ const InstallationPage = () => {
                   completedSteps.includes(index)
                     ? "border-green-300 bg-green-50"
                     : expandedStep === index
-                    ? "border-blue-300 shadow-md"
-                    : "border-gray-200"
-                }`}>
+                      ? "border-blue-300 shadow-md"
+                      : "border-gray-200"
+                }`}
+              >
                 {/* Step Header */}
                 <button
                   onClick={() => toggleStep(index)}
-                  className="w-full flex items-center p-4 text-left hover:bg-gray-50 transition-colors">
+                  className="w-full flex items-center p-4 text-left hover:bg-gray-50 transition-colors"
+                >
                   <div className="flex-shrink-0 mr-4">
                     {completedSteps.includes(index) ? (
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-green-500 text-white">
@@ -352,7 +366,8 @@ const InstallationPage = () => {
                         completedSteps.includes(index)
                           ? "text-green-700 line-through"
                           : ""
-                      }`}>
+                      }`}
+                    >
                       {step.title}
                     </h3>
                     <p className="text-gray-600 text-sm">{step.description}</p>
@@ -369,7 +384,8 @@ const InstallationPage = () => {
                         completedSteps.includes(index)
                           ? "Mark incomplete"
                           : "Mark complete"
-                      }>
+                      }
+                    >
                       <CheckCircle className="h-5 w-5" />
                     </button>
                     {expandedStep === index ? (
@@ -405,7 +421,8 @@ const InstallationPage = () => {
                       {step.link && (
                         <Link
                           to={step.link.url}
-                          className="inline-flex items-center text-sm text-blue-600 hover:text-gray-700 font-medium">
+                          className="inline-flex items-center text-sm text-blue-600 hover:text-gray-700 font-medium"
+                        >
                           {step.link.text}
                           <ExternalLink className="h-4 w-4 ml-1" />
                         </Link>
@@ -424,29 +441,28 @@ const InstallationPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link
               to="/account-setup"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors"
+            >
               <Settings className="h-6 w-6 text-blue-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Account Setup</h3>
-                <p className="text-sm text-gray-500">
-                  Configure your account
-                </p>
+                <p className="text-sm text-gray-500">Configure your account</p>
               </div>
             </Link>
             <Link
               to="/quickstart"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors"
+            >
               <Play className="h-6 w-6 text-green-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Quick Start</h3>
-                <p className="text-sm text-gray-500">
-                  Get started quickly
-                </p>
+                <p className="text-sm text-gray-500">Get started quickly</p>
               </div>
             </Link>
             <Link
               to="/troubleshooting"
-              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors">
+              className="flex items-center p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-gray-50 transition-colors"
+            >
               <RefreshCw className="h-6 w-6 text-orange-600 mr-3" />
               <div>
                 <h3 className="font-semibold">Troubleshooting</h3>
@@ -465,19 +481,31 @@ const InstallationPage = () => {
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>"App won't load" — clear browser cache, check internet, try incognito</span>
+                  <span>
+                    "App won't load" — clear browser cache, check internet, try
+                    incognito
+                  </span>
                 </li>
                 <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>"PWA install not showing" — use Chrome/Edge/Safari; must be on HTTPS</span>
+                  <span>
+                    "PWA install not showing" — use Chrome/Edge/Safari; must be
+                    on HTTPS
+                  </span>
                 </li>
                 <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>"Can't sign in" — reset password at /login or contact support</span>
+                  <span>
+                    "Can't sign in" — reset password at /login or contact
+                    support
+                  </span>
                 </li>
                 <li className="flex items-start text-gray-600">
                   <RefreshCw className="h-4 w-4 text-blue-500 mr-2 mt-0.5 flex-shrink-0" />
-                  <span>"Real-time sync fails" — check WebSocket not blocked by firewall/VPN</span>
+                  <span>
+                    "Real-time sync fails" — check WebSocket not blocked by
+                    firewall/VPN
+                  </span>
                 </li>
               </ul>
             </div>
@@ -486,19 +514,22 @@ const InstallationPage = () => {
               <div className="space-y-3">
                 <Link
                   to="/faq"
-                  className="block text-blue-600 hover:underline text-sm">
+                  className="block text-blue-600 hover:underline text-sm"
+                >
                   → Check FAQ
                 </Link>
                 <Link
                   to="/contact-support"
-                  className="block text-blue-600 hover:underline text-sm">
+                  className="block text-blue-600 hover:underline text-sm"
+                >
                   → Contact Support
                 </Link>
                 <a
                   href="https://discord.gg/2MMSdX3Uee"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-blue-600 hover:underline text-sm">
+                  className="block text-blue-600 hover:underline text-sm"
+                >
                   → Join Discord Community
                 </a>
               </div>

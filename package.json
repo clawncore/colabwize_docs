@@ -53,7 +53,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "ESLINT_NO_DEV_ERRORS=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "build": "cross-env ESLINT_NO_DEV_ERRORS=true DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -76,8 +76,10 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^18.19.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "cross-env": "^7.0.3",
     "tailwindcss": "^3.4.19"
   }
 }

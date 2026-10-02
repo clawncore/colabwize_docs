@@ -35,6 +35,20 @@ interface FeedbackComment {
   };
 }
 
+interface FeatureRequest {
+  id: string;
+  user_id: string | null;
+  title: string;
+  description: string;
+  category: string;
+  priority: string;
+  status: string;
+  votes: number;
+  created_at: string;
+  updated_at: string;
+  implemented_at: string | null;
+}
+
 class FeedbackService {
   // Create a new feedback item
   async createFeedback(feedbackData: {
@@ -114,6 +128,29 @@ class FeedbackService {
   async getFeedbackStats(): Promise<any> {
     const response = await apiClient.get("/api/feedback/stats/summary");
     return response.stats;
+  }
+
+  // Get feature requests, sorted by votes descending
+  async getFeatureRequests(): Promise<{
+    success: boolean;
+    message: string;
+    requests: FeatureRequest[];
+  }> {
+    const response = await apiClient.get("/api/feature-request");
+    return response;
+  }
+
+  // Vote for a feature request
+  async voteForFeature(featureId: string): Promise<{
+    success: boolean;
+    message: string;
+    votes?: number;
+  }> {
+    const response = await apiClient.post(
+      `/api/feature-request/${featureId}/vote`,
+      {}
+    );
+    return response;
   }
 }
 

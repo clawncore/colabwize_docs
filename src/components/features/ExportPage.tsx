@@ -1,5 +1,22 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, Download, FileText, Palette, Share2, Settings, Zap, Brain, AlertTriangle, CheckCircle2, FileArchive, Link as LinkIcon, HardDrive, Cloud, Database } from "lucide-react";
+import {
+  ArrowLeft,
+  Download,
+  FileText,
+  Palette,
+  Share2,
+  Settings,
+  Zap,
+  Brain,
+  AlertTriangle,
+  CheckCircle2,
+  FileArchive,
+  Link as LinkIcon,
+  HardDrive,
+  Cloud,
+  Database,
+  AlertCircle,
+} from "lucide-react";
 import {
   Step,
   InfoBox,
@@ -23,8 +40,9 @@ const ExportPage = () => {
             <Download className="h-16 w-16 mx-auto mb-4 text-blue-600" />
             <h1 className="text-3xl font-bold mb-2">Export Your Document</h1>
             <p className="text-lg text-gray-600">
-              Turn your finished paper into a clean, submission-ready file with multiple formats,
-              citation style auto-formatting, self-plagiarism guard, and direct cloud integrations.
+              Turn your finished paper into a clean, submission-ready file with
+              multiple formats, citation style auto-formatting, self-plagiarism
+              guard, and direct cloud integrations.
             </p>
           </div>
         </div>
@@ -34,16 +52,19 @@ const ExportPage = () => {
         {/* Overview */}
         <section className="mb-10">
           <p className="text-gray-700 leading-relaxed mb-4">
-            Export packages your document together with its citations, bibliography, and formatting
-            so your work looks right wherever it lands. The export workflow is a multi-step modal
-            that guides you through format selection, metadata entry, destination choice, and
-            pre-flight checks — including citation audit integration and self-plagiarism detection.
+            Export packages your document together with its citations,
+            bibliography, and formatting so your work looks right wherever it
+            lands. The export workflow is a multi-step modal that guides you
+            through format selection, metadata entry, destination choice, and
+            pre-flight checks — including citation audit integration and
+            self-plagiarism detection.
           </p>
           <InfoBox>
-            <strong>Key workflow:</strong> Export is gated by the Citation Audit. If your
-            compliance score is below 70, export is blocked until you resolve citation issues.
-            The workflow also runs a self-plagiarism check against your previous submissions
-            before any download begins.
+            <strong>Key workflow:</strong> Export is gated by the Citation
+            Audit. If your compliance score is below 70, export is blocked until
+            you resolve citation issues. The workflow also runs a
+            self-plagiarism check against your previous submissions before any
+            download begins.
           </InfoBox>
         </section>
 
@@ -58,8 +79,9 @@ const ExportPage = () => {
                 Multiple Formats
               </h3>
               <p className="text-sm text-gray-600">
-                DOCX, PDF, LaTeX, RTF, TXT via Pandoc. DOCX/PDF keep citations and bibliography
-                intact with style-specific formatting (APA, MLA, IEEE, Chicago, Harvard).
+                DOCX, PDF, LaTeX, RTF, TXT via Pandoc. DOCX/PDF keep citations
+                and bibliography intact with style-specific formatting (APA,
+                MLA, IEEE, Chicago, Harvard).
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
@@ -70,9 +92,10 @@ const ExportPage = () => {
                 Style-Preserved Export
               </h3>
               <p className="text-sm text-gray-600">
-                In-text citations resolved to clickable hyperlinks. Bibliography entries formatted
-                per selected style. Citation nodes and bibliography nodes flattened to standard
-                HTML for Pandoc conversion.
+                In-text citations resolved to clickable hyperlinks. Bibliography
+                entries formatted per selected style. Citation nodes and
+                bibliography nodes flattened to standard HTML for Pandoc
+                conversion.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
@@ -83,8 +106,9 @@ const ExportPage = () => {
                 Direct Cloud Integrations
               </h3>
               <p className="text-sm text-gray-600">
-                Export to Google Drive, Zotero, Mendeley, or local download. Google Drive uses
-                OAuth; Zotero/Mendeley export reference metadata.
+                Export to Google Drive, Zotero, Mendeley, or local download.
+                Google Drive uses OAuth; Zotero/Mendeley export reference
+                metadata.
               </p>
             </div>
           </div>
@@ -101,8 +125,9 @@ const ExportPage = () => {
                 Self-Plagiarism Guard
               </h3>
               <p className="text-sm text-gray-600">
-                Automatic check against your previous submissions before export. Blocks or warns
-                on >20% similarity to internal work. Manual re-check available in modal.
+                Automatic check against your previous submissions before export.
+                Blocks or warns on &gt;20% similarity to internal work. Manual
+                re-check available in modal.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
@@ -113,9 +138,10 @@ const ExportPage = () => {
                 Journal Submission Package
               </h3>
               <p className="text-sm text-gray-600">
-                Publication Export mode: creates Submission.zip with Main Manuscript (DOCX, text
-                only + figure callouts) + Figures File (DOCX, one figure per page). Uses
-                publisher profiles for journal-specific formatting.
+                Publication Export mode: creates Submission.zip with Main
+                Manuscript (DOCX, text only + figure callouts) + Figures File
+                (DOCX, one figure per page). Uses publisher profiles for
+                journal-specific formatting.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
@@ -126,9 +152,10 @@ const ExportPage = () => {
                 Pre-Flight Citation Audit
               </h3>
               <p className="text-sm text-gray-600">
-                Background pre-check runs citation audit on export. If violations block
-                submission (NEEDS_REVIEW), findings are shown with "continue anyway" option.
-                Integrates with existing citation audit report.
+                Background pre-check runs citation audit on export. If
+                violations block submission (NEEDS_REVIEW), findings are shown
+                with "continue anyway" option. Integrates with existing citation
+                audit report.
               </p>
             </div>
           </div>
@@ -146,13 +173,15 @@ const ExportPage = () => {
         {/* Step 1 — Open Export & Choose Format */}
         <NumberedSection n={1} title="Open the Export workflow">
           <p className="text-gray-700 leading-relaxed mb-4">
-            In the editor, click the <span className="font-medium">Export</span> button in the
-            top toolbar. This opens the Export Workflow modal — a multi-step guided process.
+            In the editor, click the <span className="font-medium">Export</span>{" "}
+            button in the top toolbar. This opens the Export Workflow modal — a
+            multi-step guided process.
           </p>
           <Step n={1} title="Step 1: Document Details">
             <p className="text-gray-700 leading-relaxed mb-4">
-              Enter document metadata: title (pre-filled from project), author name, affiliation,
-              course, instructor, running head, and date. Auto-filled from your user profile.
+              Enter document metadata: title (pre-filled from project), author
+              name, affiliation, course, instructor, running head, and date.
+              Auto-filled from your user profile.
             </p>
           </Step>
           <Step n={2} title="Step 2: Choose Export Mode & Format">
@@ -182,14 +211,18 @@ const ExportPage = () => {
                   <li>• Main Manuscript (DOCX): text only + figure callouts</li>
                   <li>• Figures File (DOCX): one figure per page</li>
                   <li>• Publisher profiles for journal-specific formatting</li>
-                  <li>• Configurable: figure placement, image format, DPI, column layout</li>
+                  <li>
+                    • Configurable: figure placement, image format, DPI, column
+                    layout
+                  </li>
                 </ul>
               </div>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              For Standard Export, select format: <strong>DOCX</strong> (best for submission/editing)
-              or <strong>PDF</strong> (best for sharing/printing). LaTeX, RTF, TXT are available
-              via Pandoc on the backend but currently disabled in the UI.
+              For Standard Export, select format: <strong>DOCX</strong> (best
+              for submission/editing) or <strong>PDF</strong> (best for
+              sharing/printing). LaTeX, RTF, TXT are available via Pandoc on the
+              backend but currently disabled in the UI.
             </p>
           </Step>
           <Step n={3} title="Step 3: Choose Destination">
@@ -202,47 +235,59 @@ const ExportPage = () => {
                   <HardDrive className="h-4 w-4 text-gray-600" />
                   Local Download
                 </p>
-                <p className="text-sm text-gray-600 mt-1">Downloads file to your device via signed URL</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Downloads file to your device via signed URL
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-3">
                 <p className="font-medium text-gray-900 flex items-center gap-2">
                   <Cloud className="h-4 w-4 text-blue-600" />
                   Google Drive
                 </p>
-                <p className="text-sm text-gray-600 mt-1">Export directly to Google Drive (OAuth)</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Export directly to Google Drive (OAuth)
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-3">
                 <p className="font-medium text-gray-900 flex items-center gap-2">
                   <Database className="h-4 w-4 text-red-600" />
                   Zotero
                 </p>
-                <p className="text-sm text-gray-600 mt-1">Export reference metadata to Zotero library</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Export reference metadata to Zotero library
+                </p>
               </div>
               <div className="border border-gray-200 rounded-lg p-3">
                 <p className="font-medium text-gray-900 flex items-center gap-2">
                   <Database className="h-4 w-4 text-green-600" />
                   Mendeley
                 </p>
-                <p className="text-sm text-gray-600 mt-1">Export reference metadata to Mendeley library</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Export reference metadata to Mendeley library
+                </p>
               </div>
             </div>
           </Step>
           <Step n={4} title="Step 4: Review & Export">
             <p className="text-gray-700 leading-relaxed mb-4">
-              Final review screen shows format, destination, metadata, and any pre-check results.
-              Click <span className="font-medium">Export</span> to generate and download.
+              Final review screen shows format, destination, metadata, and any
+              pre-check results. Click{" "}
+              <span className="font-medium">Export</span> to generate and
+              download.
             </p>
           </Step>
           <Tip>
-            The workflow saves your format and destination preferences for next time.
+            The workflow saves your format and destination preferences for next
+            time.
           </Tip>
         </NumberedSection>
 
         {/* Citation & Bibliography Handling */}
         <NumberedSection n={2} title="Citation and bibliography handling">
           <p className="text-gray-700 leading-relaxed mb-4">
-            During export, the frontend prepares the HTML by resolving interactive citation nodes
-            into standard HTML that Pandoc understands:
+            During export, the frontend prepares the HTML by resolving
+            interactive citation nodes into standard HTML that Pandoc
+            understands:
           </p>
           <div className="space-y-3 mb-4">
             <div className="border border-gray-200 rounded-lg p-4">
@@ -251,11 +296,12 @@ const ExportPage = () => {
                 In-text citations → hyperlinks
               </h4>
               <p className="text-sm text-gray-700">
-                Citation nodes (<code><a data-citation-id="KEY"></code>) are resolved to
-                formatted in-text citations per the selected style (APA, MLA, IEEE, Chicago,
-                Harvard) using <code>formatCitation()</code>. Output: <code><a
-                href="#bib-KEY">(Smith, 2023)</a></code> pointing to bibliography
-                anchor.
+                Citation nodes (<code>&lt;a data-citation-id="KEY"&gt;</code>)
+                are resolved to formatted in-text citations per the selected
+                style (APA, MLA, IEEE, Chicago, Harvard) using{" "}
+                <code>formatCitation()</code>. Output:{" "}
+                <code>&lt;a href="#bib-KEY"&gt;(Smith, 2023)&lt;/a&gt;</code>{" "}
+                pointing to bibliography anchor.
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-4">
@@ -264,10 +310,16 @@ const ExportPage = () => {
                 Bibliography entries → formatted paragraphs
               </h4>
               <p className="text-sm text-gray-700">
-                Bibliography nodes (<code><div data-bibliography-entry="true"
-                id="bib-KEY"></code>) are flattened to <code><p
-                id="bib-KEY" class="bibliography-entry"></code> with hanging indent CSS.
-                Preserves the <code>id</code> anchor so in-text links land correctly.
+                Bibliography nodes (
+                <code>
+                  &lt;div data-bibliography-entry="true" id="bib-KEY"&gt;
+                </code>
+                ) are flattened to{" "}
+                <code>
+                  &lt;p id="bib-KEY" class="bibliography-entry"&gt;&lt;/p&gt;
+                </code>{" "}
+                with hanging indent CSS. Preserves the <code>id</code> anchor so
+                in-text links land correctly.
               </p>
             </div>
             <div className="border border-gray-200 rounded-lg p-4">
@@ -276,24 +328,34 @@ const ExportPage = () => {
                 Pandoc conversion
               </h4>
               <p className="text-sm text-gray-700">
-                Prepared HTML written to temp file, Pandoc invoked: <code>pandoc input.html -f
-                html -s -o output.{docx|pdf|tex|rtf|txt}</code>. Citation style passed via
-                metadata. PDF requires wkhtmltopdf or lualatex engine installed.
+                Prepared HTML written to temp file, Pandoc invoked:{" "}
+                <code>
+                  pandoc input.html -f html -s -o output.&#123;docx | pdf | tex
+                  | rtf | txt&#125;
+                </code>
+                . Citation style passed via metadata. PDF requires wkhtmltopdf
+                or lualatex engine installed.
               </p>
             </div>
           </div>
           <InfoBox>
-            The backend <code>ExportService</code> uses <code>PandocExportService</code> for
-            HTML-to-format conversion. Pandoc path resolves from <code>PANDOC_PATH</code> env,
-            project-relative <code>bin/bin/pandoc</code>, or system <code>pandoc</code>.
+            The backend <code>ExportService</code> uses{" "}
+            <code>PandocExportService</code> for HTML-to-format conversion.
+            Pandoc path resolves from <code>PANDOC_PATH</code> env,
+            project-relative <code>bin/bin/pandoc</code>, or system{" "}
+            <code>pandoc</code>.
           </InfoBox>
         </NumberedSection>
 
         {/* Self-Plagiarism Guard */}
-        <NumberedSection n={3} title="Self-Plagiarism Guard (Draft Comparison)" />
+        <NumberedSection
+          n={3}
+          title="Self-Plagiarism Guard (Draft Comparison)"
+        />
         <p className="text-gray-700 leading-relaxed mb-4">
-          Before any export begins, the workflow runs a self-plagiarism check against your recent
-          submissions using the <code>OriginalityService</code>:
+          Before any export begins, the workflow runs a self-plagiarism check
+          against your recent submissions using the{" "}
+          <code>OriginalityService</code>:
         </p>
         <div className="space-y-3 mb-4">
           <div className="border border-amber-200 rounded-lg p-4 bg-amber-50">
@@ -303,9 +365,18 @@ const ExportPage = () => {
             </h4>
             <ul className="space-y-1 text-sm text-amber-800">
               <li>• Runs on every export attempt (Step 4)</li>
-              <li>• Compares current content against your previous project versions</li>
-              <li>• Flags sections with >20% similarity and <code>isSelfPlagiarismInternal=true</code></li>
-              <li>• If risk detected: modal confirmation required before export proceeds</li>
+              <li>
+                • Compares current content against your previous project
+                versions
+              </li>
+              <li>
+                • Flags sections with &gt;20% similarity and{" "}
+                <code>isSelfPlagiarismInternal=true</code>
+              </li>
+              <li>
+                • If risk detected: modal confirmation required before export
+                proceeds
+              </li>
             </ul>
           </div>
           <div className="border border-gray-200 rounded-lg p-4">
@@ -321,16 +392,19 @@ const ExportPage = () => {
           </div>
         </div>
         <Tip>
-          This guard helps prevent accidental self-plagiarism when reusing content across
-          multiple papers or submissions.
+          This guard helps prevent accidental self-plagiarism when reusing
+          content across multiple papers or submissions.
         </Tip>
 
         {/* Journal Submission Package */}
-        <NumberedSection n={4} title="Journal Submission Package (Publication Export)" />
+        <NumberedSection
+          n={4}
+          title="Journal Submission Package (Publication Export)"
+        />
         <p className="text-gray-700 leading-relaxed mb-4">
-          For journal submissions, switch to <strong>Publication Export</strong> mode. This
-          creates a <code>Submission.zip</code> containing two files as required by most academic
-          journals:
+          For journal submissions, switch to <strong>Publication Export</strong>{" "}
+          mode. This creates a <code>Submission.zip</code> containing two files
+          as required by most academic journals:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="border border-gray-200 rounded-xl p-4">
@@ -341,7 +415,9 @@ const ExportPage = () => {
             <ul className="space-y-1 text-sm text-gray-700">
               <li>• Text only with figure callouts (e.g., "Figure 1")</li>
               <li>• No embedded images — journals want figures separate</li>
-              <li>• Formatted per publisher profile (margins, fonts, spacing)</li>
+              <li>
+                • Formatted per publisher profile (margins, fonts, spacing)
+              </li>
               <li>• Citations and bibliography included</li>
             </ul>
           </div>
@@ -359,10 +435,12 @@ const ExportPage = () => {
           </div>
         </div>
         <div className="border border-gray-200 rounded-lg p-4 mb-4">
-          <h4 className="font-semibold text-gray-900 mb-2">Publisher Profile Settings</h4>
+          <h4 className="font-semibold text-gray-900 mb-2">
+            Publisher Profile Settings
+          </h4>
           <p className="text-sm text-gray-700 mb-2">
-            Pre-configured profiles for major publishers (Elsevier, Springer, IEEE, etc.) and a
-            Generic fallback. Settings include:
+            Pre-configured profiles for major publishers (Elsevier, Springer,
+            IEEE, etc.) and a Generic fallback. Settings include:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700">
             <li>• Figure placement: inline / end / separate</li>
@@ -374,24 +452,29 @@ const ExportPage = () => {
           </div>
         </div>
         <InfoBox>
-          Publication Export creates a document version first (<code>documentService.createDocumentVersion</code>),
-          then enqueues a <code>submission</code> job via the publishing pipeline. The job
-          polls until the <code>Submission.zip</code> artifact is ready, then triggers download.
+          Publication Export creates a document version first (
+          <code>documentService.createDocumentVersion</code>), then enqueues a{" "}
+          <code>submission</code> job via the publishing pipeline. The job polls
+          until the <code>Submission.zip</code> artifact is ready, then triggers
+          download.
         </InfoBox>
 
         {/* Pre-Flight Citation Audit Integration */}
         <NumberedSection n={5} title="Pre-Flight Citation Audit Integration" />
         <p className="text-gray-700 leading-relaxed mb-4">
-          The export workflow integrates with the Citation Audit system for a final pre-submission
-          check:
+          The export workflow integrates with the Citation Audit system for a
+          final pre-submission check:
         </p>
         <div className="space-y-3 mb-4">
           <div className="border border-gray-200 rounded-lg p-4">
-            <h4 className="font-semibold text-gray-900 mb-2">Background Pre-Check</h4>
+            <h4 className="font-semibold text-gray-900 mb-2">
+              Background Pre-Check
+            </h4>
             <p className="text-sm text-gray-700">
-              On export, the backend enqueues a <code>submission</code> job with PPE settings.
-              Before generating the package, a citation audit pre-check runs. If the audit finds
-              blocking violations (compliance score < 70, critical issues), the job pauses in
+              On export, the backend enqueues a <code>submission</code> job with
+              PPE settings. Before generating the package, a citation audit
+              pre-check runs. If the audit finds blocking violations (compliance
+              score &lt; 70, critical issues), the job pauses in
               <code>NEEDS_REVIEW</code> state.
             </p>
           </div>
@@ -401,9 +484,18 @@ const ExportPage = () => {
               NEEDS_REVIEW Handling
             </h4>
             <ul className="space-y-1 text-sm text-red-800">
-              <li>• Frontend catches <code>NeedsReviewError</code> with <code>PrecheckReport</code></li>
-              <li>• Review dialog shows: violations, integrity index, compliance score</li>
-              <li>• Options: "Continue Anyway" (resumes job) or "Keep Editing" (closes modal)</li>
+              <li>
+                • Frontend catches <code>NeedsReviewError</code> with{" "}
+                <code>PrecheckReport</code>
+              </li>
+              <li>
+                • Review dialog shows: violations, integrity index, compliance
+                score
+              </li>
+              <li>
+                • Options: "Continue Anyway" (resumes job) or "Keep Editing"
+                (closes modal)
+              </li>
               <li>• If continued, job completes and package downloads</li>
             </ul>
           </div>
@@ -413,8 +505,9 @@ const ExportPage = () => {
               Clean Export
             </h4>
             <p className="text-sm text-green-800">
-              If pre-check passes (score ≥ 70, no critical violations), job completes
-              automatically. Submission.zip downloads without interruption.
+              If pre-check passes (score ≥ 70, no critical violations), job
+              completes automatically. Submission.zip downloads without
+              interruption.
             </p>
           </div>
         </div>
@@ -429,9 +522,11 @@ const ExportPage = () => {
                 Backend: Pandoc + Puppeteer
               </h3>
               <p className="text-gray-700 text-sm">
-                <code>PandocExportService</code> handles HTML→DOCX/PDF/LaTeX/RTF/TXT.
-                <code>ExportService.launchBrowser()</code> provides shared Puppeteer config for
-                PDF rendering (--no-sandbox for container isolation). Temp dir cleanup in
+                <code>PandocExportService</code> handles
+                HTML→DOCX/PDF/LaTeX/RTF/TXT.
+                <code>ExportService.launchBrowser()</code> provides shared
+                Puppeteer config for PDF rendering (--no-sandbox for container
+                isolation). Temp dir cleanup in
                 <code>finally</code> block.
               </p>
             </div>
@@ -441,9 +536,10 @@ const ExportPage = () => {
                 Citation Style Support
               </h3>
               <p className="text-gray-700 text-sm">
-                Supported styles: APA, MLA, Chicago, IEEE, Harvard (and any CSL style). Passed
-                via metadata to Pandoc. Frontend <code>CitationStyleDialog</code> lets user
-                change style before export — updates both preview and final file.
+                Supported styles: APA, MLA, Chicago, IEEE, Harvard (and any CSL
+                style). Passed via metadata to Pandoc. Frontend{" "}
+                <code>CitationStyleDialog</code> lets user change style before
+                export — updates both preview and final file.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-4">
@@ -452,9 +548,10 @@ const ExportPage = () => {
                 Document Versioning
               </h3>
               <p className="text-gray-700 text-sm">
-                Publication Export calls <code>documentService.createDocumentVersion()</code>
-                with current TipTap content and estimated word count. Version ID passed to
-                publishing pipeline for traceability.
+                Publication Export calls{" "}
+                <code>documentService.createDocumentVersion()</code>
+                with current TipTap content and estimated word count. Version ID
+                passed to publishing pipeline for traceability.
               </p>
             </div>
             <div className="border border-gray-200 rounded-xl p-4">
@@ -463,17 +560,17 @@ const ExportPage = () => {
                 Submission.zip Artifact
               </h3>
               <p className="text-gray-700 text-sm">
-                Publishing pipeline (<code>createExport</code> + <code>getJobArtifact</code>)
-                produces signed download URL. Frontend fetches via <code>triggerDownload()</code>
-                (blob fetch → object URL → click → revoke) to avoid browser download blocking.
+                Publishing pipeline (<code>createExport</code> +{" "}
+                <code>getJobArtifact</code>) produces signed download URL.
+                Frontend fetches via <code>triggerDownload()</code>
+                (blob fetch → object URL → click → revoke) to avoid browser
+                download blocking.
               </p>
             </div>
           </div>
         </section>
 
-        <DocFooter
-          helpText="Trouble exporting, or a file doesn't look right? Reach out and we'll help you get a clean copy."
-        />
+        <DocFooter helpText="Trouble exporting, or a file doesn't look right? Reach out and we'll help you get a clean copy." />
       </div>
     </div>
   );

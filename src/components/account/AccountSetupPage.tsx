@@ -1,12 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { HelpSection } from "@/components/shared/HelpSection";
-import {
-  ArrowLeft,
-  Mail,
-  ChevronRight,
-  CheckCircle,
-} from "lucide-react";
+import { HelpSection } from "../shared/HelpSection";
+import { ArrowLeft, Mail, ChevronRight, CheckCircle } from "lucide-react";
 import {
   VideoPlaceholder,
   Step,
@@ -142,24 +137,31 @@ const AccountSetupPage = () => {
             Prefer to follow along? This short video covers the whole
             create-and-sign-in flow from start to finish.
           </p>
-          <VideoPlaceholder title="Account setup & sign-in walkthrough" length="~2 minutes" />
+          <VideoPlaceholder
+            title="Account setup & sign-in walkthrough"
+            length="~2 minutes"
+          />
         </section>
 
         {/* Step 1: sign-in screen + the 3 ways */}
         <section className="mb-12">
-          <NumberedSection n={1} title="The sign-in screen and your three options">
+          <NumberedSection
+            n={1}
+            title="The sign-in screen and your three options"
+          >
             <p className="text-gray-600 mb-4">
               When you open ColabWize, you'll see the sign-in screen. It has a
-              field for your email and password at the top, and dedicated buttons
-              underneath for the two social providers. Here's what the screen
-              looks like:
+              field for your email and password at the top, and dedicated
+              buttons underneath for the two social providers. Here's what the
+              screen looks like:
             </p>
 
             <p className="text-gray-600 mb-4">
               Having trouble signing in? See{" "}
               <Link
                 to="/troubleshooting#cant-sign-in"
-                className="text-blue-600 hover:underline">
+                className="text-blue-600 hover:underline"
+              >
                 Can't sign in
               </Link>{" "}
               in our Troubleshooting guide.
@@ -198,10 +200,10 @@ const AccountSetupPage = () => {
           </div>
 
           <p className="text-gray-600 mb-4">
-            If you use Gmail or Google Workspace, you can skip creating a separate
-            password. ColabWize uses your existing Google login. Your ColabWize
-            account is created automatically from your Google email the first
-            time you use this option.
+            If you use Gmail or Google Workspace, you can skip creating a
+            separate password. ColabWize uses your existing Google login. Your
+            ColabWize account is created automatically from your Google email
+            the first time you use this option.
           </p>
 
           <Step n={1} title="Click Continue with Google">
@@ -209,14 +211,14 @@ const AccountSetupPage = () => {
             <span className="font-medium">Continue with Google</span> button.
           </Step>
           <Step n={2} title="Choose your Google account">
-            A Google window opens. Select the account you want to use, or sign in
-            if you aren't already. If multiple accounts are listed, pick the one
-            you want linked to ColabWize.
+            A Google window opens. Select the account you want to use, or sign
+            in if you aren't already. If multiple accounts are listed, pick the
+            one you want linked to ColabWize.
           </Step>
           <Step n={3} title="Approve and you're in">
-            Review the permissions (ColabWize only needs your name and email) and
-            click <span className="font-medium">Allow</span>. You're signed in,
-            no password required.
+            Review the permissions (ColabWize only needs your name and email)
+            and click <span className="font-medium">Allow</span>. You're signed
+            in, no password required.
           </Step>
 
           <InfoBox>
@@ -261,9 +263,10 @@ const AccountSetupPage = () => {
           </Step>
 
           <InfoBox>
-            Microsoft sign-in is enabled for personal, work, and school accounts,
-            so students using a university <span className="font-medium">.edu</span>{" "}
-            login can sign in directly.
+            Microsoft sign-in is enabled for personal, work, and school
+            accounts, so students using a university{" "}
+            <span className="font-medium">.edu</span> login can sign in
+            directly.
           </InfoBox>
         </section>
 
@@ -285,7 +288,8 @@ const AccountSetupPage = () => {
 
           <Step n={1} title="Open the sign-in page">
             Go to <span className="font-medium">colabwize.com</span> and click{" "}
-            <span className="font-medium">Sign In</span> in the top-right corner.
+            <span className="font-medium">Sign In</span> in the top-right
+            corner.
           </Step>
           <Step n={2} title="Enter your email and password">
             Type the email address you registered with and the password you
@@ -333,9 +337,9 @@ const AccountSetupPage = () => {
 
             <Step n={1} title="Watch for the email">
               Within a minute or two, you'll receive a message from ColabWize
-              titled something like <span className="font-medium">Verify your
-              email</span>. Check your inbox, and if it's not there, look in
-              spam or junk.
+              titled something like{" "}
+              <span className="font-medium">Verify your email</span>. Check your
+              inbox, and if it's not there, look in spam or junk.
             </Step>
 
             <Step n={2} title="Click the verification link">
@@ -354,7 +358,8 @@ const AccountSetupPage = () => {
               Still no email? See{" "}
               <Link
                 to="/troubleshooting#verification-email-never-arrives"
-                className="text-blue-600 hover:underline">
+                className="text-blue-600 hover:underline"
+              >
                 Verification email never arrives
               </Link>{" "}
               in our Troubleshooting guide.
@@ -423,7 +428,8 @@ const AccountSetupPage = () => {
 
             <Link
               to="/quickstart"
-              className="inline-flex items-center text-blue-600 font-medium hover:underline">
+              className="inline-flex items-center text-blue-600 font-medium hover:underline"
+            >
               Continue to Quick Start
               <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
@@ -447,7 +453,8 @@ const AccountSetupPage = () => {
             </div>
             <Link
               to="/quickstart"
-              className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 font-medium text-center flex-shrink-0">
+              className="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 font-medium text-center flex-shrink-0"
+            >
               Continue to Quick Start
               <ChevronRight className="h-4 w-4 ml-1" />
             </Link>
@@ -468,7 +475,8 @@ const AccountSetupPage = () => {
                 screen. Still nothing? See the{" "}
                 <Link
                   to="/troubleshooting"
-                  className="text-blue-600 hover:underline">
+                  className="text-blue-600 hover:underline"
+                >
                   Troubleshooting Guide
                 </Link>
                 .
@@ -482,8 +490,8 @@ const AccountSetupPage = () => {
                 You may have signed up before. Click{" "}
                 <span className="font-medium">Sign In</span> and use{" "}
                 <span className="font-medium">Forgot password</span> to reset
-                it. If you originally used Google or Microsoft, sign in with that
-                method instead.
+                it. If you originally used Google or Microsoft, sign in with
+                that method instead.
               </p>
             </div>
           </div>

@@ -140,32 +140,6 @@ const FeatureRequestPage = () => {
     }
   };
 
-  // Handle commenting on a feature
-  const handleComment = async (featureId: string) => {
-    try {
-      const result = await feedbackService.addComment(featureId, "I'm interested in this feature!");
-      if (result.success) {
-        toast({
-          title: "Interest Registered",
-          description: "Thank you for your interest! Our team will consider your feedback.",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: result.message || "Failed to register interest.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      console.error("Error commenting on feature:", error);
-      toast({
-        title: "Error",
-        description: "Failed to register interest. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
-
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -543,12 +517,6 @@ const FeatureRequestPage = () => {
                       disabled={(feature as any).hasVoted}>
                       <Star className={`h-4 w-4 ${(feature as any).hasVoted ? "fill-current" : ""}`} />
                       {(feature as any).hasVoted ? "Voted" : "Vote"}
-                    </button>
-                    <span className="text-gray-300">•</span>
-                    <button
-                      onClick={() => handleComment(feature.id)}
-                      className="text-sm font-medium text-gray-600 hover:text-gray-800">
-                      Comment / Show Interest
                     </button>
                     <span className="text-gray-300 ml-auto text-xs">
                       Submitted {formatDate(feature.created_at)}
